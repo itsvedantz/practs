@@ -2,10 +2,10 @@ const cyberGrid = document.querySelector('.cyber-grid');
 
 // Assuming you have an array of PDF file paths
 const pdfFiles = [
-    { name: 'BIDS', path: 'KNN.py' },
-    { name: 'SIS', path: 'AMP_PracticalFinal.pdf' },
-    { name: 'GIS', path: 'gis.pdf' },
-    { name: 'Android programming', path: 'AMP_PracticalFinal.pdf' },
+    { name: 'ada', path: 'Adaboost.txt' },
+    { name: 'IDFS', path: 'IDFS.txt' },
+    { name: 'ASSRULE', path: 'assrule.txt' },
+    { name: 'KNN', path: 'KNN.txt' },
 
     // Add more file paths as needed
 ];
@@ -28,4 +28,5 @@ pdfFiles.forEach((file) => {
 
     cyberGrid.appendChild(cyberCard);
 });
+
 
