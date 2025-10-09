@@ -19,6 +19,33 @@ print("Text:" + text)
 str(s)
 print(" Cipher :" + encrypt(text,s))
 
+practical 1b
+
+s=input("Enter the string: ")
+k=int(input("Enter the key: "))
+enc=[[" " for i in range(len(s))] for j in range(k)]
+row = 0
+flag = 0
+for i in range(len(s)):
+    enc[row][i]=s[i]
+    if row==0:
+        flag=0
+    elif row==k-1:
+        flag=1
+    if flag==0:
+        row+=1
+    else:
+        row-=1
+for i in range(k):
+    print("".join(enc[i]))
+ct=[]
+for i in range(k):
+    for j in range(len(s)):
+        if enc[i][j]!=' ':
+            ct.append(enc[i][j])
+cipher="".join(ct)
+print("Cipher Text: ",cipher)
+
 =========================================================
 
 PRACTICAL 2 E,D
@@ -160,3 +187,4 @@ if __name__ == "__main__":
 
     print("The secret key of ALice is: %d"%(ka))
     print("The secret key of ALice is: %d"%(kb))
+
