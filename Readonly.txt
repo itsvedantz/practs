@@ -1,0 +1,119 @@
+
+practical 1A
+
+import queue as Q 
+from RMP import dict_gn 
+start = 'Arad' 
+goal = "Bucharest" 
+result=''
+def BFS(city,cityq,visitedq): 
+    global result 
+    if city==start: 
+        result = result + "" + city 
+    for eachcity in dict_gn[city].keys():
+        if eachcity==goal: 
+            result = result + " " + eachcity
+            return 
+        if eachcity not in cityq.queue and eachcity not in visitedq.queue:
+            cityq.put(eachcity) 
+            result = result + " " + eachcity
+    visitedq.put(city) 
+    BFS(cityq.get(),cityq,visitedq)
+def main():
+     cityq = Q.Queue()
+     visitedq = Q.Queue()
+     BFS(start,cityq,visitedq)
+     print("BFS Traversal From ", start," to " , goal, "is :")
+     print(result) 
+main() 
+
+
+
+
+PRACTICAL 1B
+
+import queue as Q 
+from RMP import dict_gn 
+start = "Arad" 
+goal = "Bucharest" 
+result = "" 
+ 
+def DLS(city,visitedstack,startlimit,endlimit): 
+    global result 
+    found = 0 
+    result = result + city + " " 
+    visitedstack.append(city) 
+    if city == goal: 
+        return 1 
+    if startlimit == endlimit: 
+         return 0 
+    for eachcity in dict_gn[city].keys(): 
+        if eachcity not in visitedstack: 
+              found = DLS(eachcity,visitedstack,startlimit+1,endlimit) 
+        if found: 
+              return found 
+ 
+def IDDFS(city,visitedstack,endlimit): 
+    global result 
+    for i in range(0,endlimit): 
+        print("Seaching at Limit:", i) 
+        found = DLS(city,visitedstack, 0 , i) 
+        if found: 
+            print("Found") 
+            break 
+        else: 
+            print("Not Found!") 
+            print(result) 
+            print("______") 
+            result="" 
+            visitedstack = []
+def main():
+    visitedstack = []
+    IDDFS(start,visitedstack,9)
+    print("IDDFS Traversal from ", start, " to ",goal," is:")
+    print(result) 
+main()
+
+
+
+PRACTICAL 7
+
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score
+iris = load_iris()
+X = iris.data
+y = iris.target
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+clf = GaussianNB()
+clf.fit(X_train, y_train)
+y_pred = clf.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+
+
+PRACTICAL 8
+
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+df = pd.read_csv('Iris.csv')
+
+X = df.drop(['ID', 'Target'], axis=1).values
+
+y = df['Target'].values
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+k = 3
+clf = KNeighborsClassifier(n_neighbors=k)
+clf.fit(X_train, y_train)
+y_pred = clf.predict(X_test)
+classification_accuracy = accuracy_score(y_test, y_pred)
+print("Classification Accuracy:", classification_accuracy)
+
+
+
+
+
