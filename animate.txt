@@ -1,0 +1,45 @@
+Animate Character 
+From unity asset store download the desired assets package
+Click on open in unity and import the assets from the prompt.
+Open assets folder and place background.
+Add character from PSD folder and adjust its size.
+Click on the character, then add component Rigid body 2D and a box collider 2D
+Adjust the collider to the character’s body.
+Create a scripts folder
+In the scripts folder create a C# script named “PlayerControl”
+Then type the following code in the PlayerControl.cs file.
+Save the file and then add this file to the character from add component .
+Add speed.
+Run the project and use navigation keys for player movement.
+============================================================
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class PlayerControl : MonoBehaviour
+{
+    private Rigidbody2D rb;
+    public float speed;
+    float vertical, horizontal;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        movement();
+    }
+
+    void movement()
+    {
+        vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+    }
+}
+
+
+
