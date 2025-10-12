@@ -1,64 +1,67 @@
-#snake game py----------------------------------------------------------------------------
-
-import pygame as pg
-y, step, head, = segments=[15,16,17]
-n, apple=step, 99
-screen_fill = pg.display.set_mode([255]*2,pg.SCALED).fill
-
-while segments.count(head)%2*head%n*(head&240):
-    if e := pg.event.get(768):
-        step = (e[0].key % 4*17+15)%49 - n
-    segments = segments[apple!= head:]+[head+step]
-
-    screen_fill('white')
-    if apple == head:
-        apple = segments[0]
-    for i, v in enumerate([apple]+segments):
-        screen_fill('red' if i else 'green',((v-1)%n*y,(v-n)//n*y,y,y))
-    pg.display.flip()
-    head += step
-    pg.time.wait(100)
-
-
-#shooting game py-------------------------------------------------------------------------
-
+From unity asset store download the desired assets package
+Click on open in unity and import the assets from the prompt.
+Open assets folder and place background.
+Add character from PSD folder and adjust its size.
+Click on the character, then add component Rigid body 2D and a box collider 2D
+Adjust the collider to the character’s body.
+Create a scripts folder
+In the scripts folder create a C# script named “PlayerControl”
+Then type the following code in the PlayerControl.cs file.
+Save the file and then add this file to the character from add component .
+Add speed.
+Create an empty object in the hierarchy named “BulletHolder”
+From the misc folder drag and drop a bullet and adjust its size.
+Create another script in scripts folder named “Attack” for character attack.
+Then type the following code in the Attack.cs file.
+----
+Add the projectile script to the bullet and give speed.
+Duplicate the bullet object 9 times and then add all the bullets to the list in attack script of the 
+character.
+And Add Enemy character in hierarchy form assets folder 
+And give it BoxCollider2D, set isTriger is check in BoxCollider2D.
+Add new tag “enemy” and give this tag to our enemy character 
+Run the project and use left mouse key to shoot and navigation keys for player movement.
+===================================================
 import pygame
 import random
 import sys
 
+# Initialize Pygame
 pygame.init()
 
-
+# Set screen dimensions
 WIDTH, HEIGHT = 800, 600
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Simple Shooting Game")
 
-
+# Colors
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 
-
+# Player
 player_size = 50
 player_pos = [WIDTH // 2 - player_size // 2, HEIGHT - 2 * player_size]
 player_speed = 10
 
+# Bullet
 bullet_size = 10
 bullet_speed = 10
 bullets = []
 
+# Enemy
 enemy_size = 50
 enemy_pos = [random.randint(0, WIDTH - enemy_size), 0]
 enemy_speed = 5
 
-
+# Game over flag
 game_over = False
 
-
+# Score
 score = 0
 font = pygame.font.Font(None, 36)
 
-
+# Main game loop
 while not game_over:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -69,17 +72,17 @@ while not game_over:
                 bullet_pos = [player_pos[0] + player_size // 2 - bullet_size // 2, player_pos[1]]
                 bullets.append(bullet_pos)
 
-
+    # Move the player
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT] and player_pos[0] > 0:
         player_pos[0] -= player_speed
     if keys[pygame.K_RIGHT] and player_pos[0] < WIDTH - player_size:
         player_pos[0] += player_speed
 
-    
+    # Move the enemy
     enemy_pos[1] += enemy_speed
 
-    
+    # Check collision
     for bullet in bullets:
         if pygame.Rect(enemy_pos[0], enemy_pos[1], enemy_size, enemy_size).colliderect(pygame.Rect(bullet[0], bullet[1], bullet_size, bullet_size)):
             bullets.remove(bullet)
@@ -90,25 +93,25 @@ while not game_over:
         else:
             bullets.remove(bullet)
 
-    
+    # Draw everything
     SCREEN.fill(WHITE)
     pygame.draw.rect(SCREEN, RED, (player_pos[0], player_pos[1], player_size, player_size))
     pygame.draw.rect(SCREEN, BLUE, (enemy_pos[0], enemy_pos[1], enemy_size, enemy_size))
     for bullet in bullets:
         pygame.draw.rect(SCREEN, RED, (bullet[0], bullet[1], bullet_size, bullet_size))
 
-    
+    # Display score
     score_text = font.render("Score: " + str(score), True, RED)
     SCREEN.blit(score_text, (10, 10))
 
-    
+    # Game over condition
     if pygame.Rect(player_pos[0], player_pos[1], player_size, player_size).colliderect(pygame.Rect(enemy_pos[0], enemy_pos[1], enemy_size, enemy_size)):
         game_over = True
 
     pygame.display.update()
     pygame.time.Clock().tick(30)
 
-
+# Game over screen
 SCREEN.fill(WHITE)
 game_over_text = font.render("Game Over! Your Score: " + str(score), True, RED)
 SCREEN.blit(game_over_text, (WIDTH // 2 - 200, HEIGHT // 2))
@@ -117,101 +120,3 @@ pygame.time.delay(2000)
 
 pygame.quit()
 sys.exit()
-
-# Practical 2----------------------------------------------------------------------
-
-import pygame
-pygame.init()
-screen  = pygame.display.set_mode([500,500])
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-    screen.fill((255,255,255))
-    pygame.draw.circle(screen,(0,0,255),(250,250),75)
-    pygame.display.flip()
-pygame.quit()    
-        
-UNITY_CODE Pract5-----------------------------------------------------------------------
-
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Scrolling : MonoBehaviour
-{
-    Material mat;
-    [SerializeField] private float speed;
-    float distance;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        mat = GetComponent<Renderer>().material;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        distance += Time.deltaTime * speed;
-        mat.SetTextureOffset("_MainTex", Vector2.right * distance);
-    }
-}
-
-
-
-UNITY_CODE Pract6-----------------------------------------------------------------------
-
-
-using Cinemachine; 
-using System.Collections; 
-using System.Collections.Generic; 
-using UnityEngine; 
-public class Shake : MonoBehaviour 
-{ 
-private CinemachineVirtualCamera CVC; 
-public float shakeIntencity = 5f; 
-public float shakeTime = 0.2f; 
-private float timer; 
-private CinemachineBasicMultiChannelPerlin _cbmcp; 
-void Awake() 
-{ 
-        CVC = GetComponent<CinemachineVirtualCamera>(); 
-    } 
- 
-   private void Start() 
-    { 
-        stopShake(); 
-    }   
-    void Update() 
-    { 
-        if (Input.GetKey(KeyCode.Space)) 
-        { 
-            ShakeCamera(); 
-        } 
-        if (timer >= 0) 
-        { 
-            timer -= Time.deltaTime; 
-            if (timer <= 0) 
-            { 
-                stopShake(); 
-            } 
-        } 
-    } 
-    public void ShakeCamera() 
-    { 
-        CinemachineBasicMultiChannelPerlin _cbmcp = CVC.GetCinemachineComponent < 
-CinemachineBasicMultiChannelPerlin>(); 
-        _cbmcp.m_AmplitudeGain = shakeIntencity; 
-        timer = shakeTime; 
-    } 
-    public void stopShake() 
-    { 
-        CinemachineBasicMultiChannelPerlin _cbmcp = CVC.GetCinemachineComponent < 
-CinemachineBasicMultiChannelPerlin>(); 
-        _cbmcp.m_AmplitudeGain = 0f; 
-        timer = 0; 
- 
-    } 
-}
