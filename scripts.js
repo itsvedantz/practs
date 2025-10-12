@@ -4,6 +4,7 @@ const cyberGrid = document.querySelector('.cyber-grid');
 const pdfFiles = [
     { name: 'gp', path: 'ai.txt' },
     { name: 'INS', path: 'ins.txt' },
+    { name: 'INS', path: 'animate.txt' },
     { name: 'INS pr6', path: 'pract6.pkt' },
     { name: 'INS pr7', path: 'pract7.pkt' },
     { name: 'INS pr8', path: 'pract8.pkt' },
@@ -30,6 +31,7 @@ pdfFiles.forEach((file) => {
 
     cyberGrid.appendChild(cyberCard);
 });
+
 
 
 
