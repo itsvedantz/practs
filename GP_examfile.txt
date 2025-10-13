@@ -1,0 +1,217 @@
+#snake game py----------------------------------------------------------------------------
+
+import pygame as pg
+y, step, head, = segments=[15,16,17]
+n, apple=step, 99
+screen_fill = pg.display.set_mode([255]*2,pg.SCALED).fill
+
+while segments.count(head)%2*head%n*(head&240):
+    if e := pg.event.get(768):
+        step = (e[0].key % 4*17+15)%49 - n
+    segments = segments[apple!= head:]+[head+step]
+
+    screen_fill('white')
+    if apple == head:
+        apple = segments[0]
+    for i, v in enumerate([apple]+segments):
+        screen_fill('red' if i else 'green',((v-1)%n*y,(v-n)//n*y,y,y))
+    pg.display.flip()
+    head += step
+    pg.time.wait(100)
+
+
+#shooting game py-------------------------------------------------------------------------
+
+import pygame
+import random
+import sys
+
+pygame.init()
+
+
+WIDTH, HEIGHT = 800, 600
+SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Simple Shooting Game")
+
+
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+BLUE = (0, 0, 255)
+
+
+player_size = 50
+player_pos = [WIDTH // 2 - player_size // 2, HEIGHT - 2 * player_size]
+player_speed = 10
+
+bullet_size = 10
+bullet_speed = 10
+bullets = []
+
+enemy_size = 50
+enemy_pos = [random.randint(0, WIDTH - enemy_size), 0]
+enemy_speed = 5
+
+
+game_over = False
+
+
+score = 0
+font = pygame.font.Font(None, 36)
+
+
+while not game_over:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                bullet_pos = [player_pos[0] + player_size // 2 - bullet_size // 2, player_pos[1]]
+                bullets.append(bullet_pos)
+
+
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT] and player_pos[0] > 0:
+        player_pos[0] -= player_speed
+    if keys[pygame.K_RIGHT] and player_pos[0] < WIDTH - player_size:
+        player_pos[0] += player_speed
+
+    
+    enemy_pos[1] += enemy_speed
+
+    
+    for bullet in bullets:
+        if pygame.Rect(enemy_pos[0], enemy_pos[1], enemy_size, enemy_size).colliderect(pygame.Rect(bullet[0], bullet[1], bullet_size, bullet_size)):
+            bullets.remove(bullet)
+            score += 1
+            enemy_pos = [random.randint(0, WIDTH - enemy_size), 0]
+        elif bullet[1] > 0:
+            bullet[1] -= bullet_speed
+        else:
+            bullets.remove(bullet)
+
+    
+    SCREEN.fill(WHITE)
+    pygame.draw.rect(SCREEN, RED, (player_pos[0], player_pos[1], player_size, player_size))
+    pygame.draw.rect(SCREEN, BLUE, (enemy_pos[0], enemy_pos[1], enemy_size, enemy_size))
+    for bullet in bullets:
+        pygame.draw.rect(SCREEN, RED, (bullet[0], bullet[1], bullet_size, bullet_size))
+
+    
+    score_text = font.render("Score: " + str(score), True, RED)
+    SCREEN.blit(score_text, (10, 10))
+
+    
+    if pygame.Rect(player_pos[0], player_pos[1], player_size, player_size).colliderect(pygame.Rect(enemy_pos[0], enemy_pos[1], enemy_size, enemy_size)):
+        game_over = True
+
+    pygame.display.update()
+    pygame.time.Clock().tick(30)
+
+
+SCREEN.fill(WHITE)
+game_over_text = font.render("Game Over! Your Score: " + str(score), True, RED)
+SCREEN.blit(game_over_text, (WIDTH // 2 - 200, HEIGHT // 2))
+pygame.display.update()
+pygame.time.delay(2000)
+
+pygame.quit()
+sys.exit()
+
+# Practical 2----------------------------------------------------------------------
+
+import pygame
+pygame.init()
+screen  = pygame.display.set_mode([500,500])
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+    screen.fill((255,255,255))
+    pygame.draw.circle(screen,(0,0,255),(250,250),75)
+    pygame.display.flip()
+pygame.quit()    
+        
+UNITY_CODE Pract5-----------------------------------------------------------------------
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Scrolling : MonoBehaviour
+{
+    Material mat;
+    [SerializeField] private float speed;
+    float distance;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        mat = GetComponent<Renderer>().material;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        distance += Time.deltaTime * speed;
+        mat.SetTextureOffset("_MainTex", Vector2.right * distance);
+    }
+}
+
+
+
+UNITY_CODE Pract6-----------------------------------------------------------------------
+
+
+using Cinemachine; 
+using System.Collections; 
+using System.Collections.Generic; 
+using UnityEngine; 
+public class Shake : MonoBehaviour 
+{ 
+private CinemachineVirtualCamera CVC; 
+public float shakeIntencity = 5f; 
+public float shakeTime = 0.2f; 
+private float timer; 
+private CinemachineBasicMultiChannelPerlin _cbmcp; 
+void Awake() 
+{ 
+        CVC = GetComponent<CinemachineVirtualCamera>(); 
+    } 
+ 
+   private void Start() 
+    { 
+        stopShake(); 
+    }   
+    void Update() 
+    { 
+        if (Input.GetKey(KeyCode.Space)) 
+        { 
+            ShakeCamera(); 
+        } 
+        if (timer >= 0) 
+        { 
+            timer -= Time.deltaTime; 
+            if (timer <= 0) 
+            { 
+                stopShake(); 
+            } 
+        } 
+    } 
+    public void ShakeCamera() 
+    { 
+        CinemachineBasicMultiChannelPerlin _cbmcp = CVC.GetCinemachineComponent < 
+CinemachineBasicMultiChannelPerlin>(); 
+        _cbmcp.m_AmplitudeGain = shakeIntencity; 
+        timer = shakeTime; 
+    } 
+    public void stopShake() 
+    { 
+        CinemachineBasicMultiChannelPerlin _cbmcp = CVC.GetCinemachineComponent < 
+CinemachineBasicMultiChannelPerlin>(); 
+        _cbmcp.m_AmplitudeGain = 0f; 
+        timer = 0; 
+ 
+    } 
+}
