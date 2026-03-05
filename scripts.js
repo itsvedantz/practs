@@ -5,7 +5,7 @@ const pdfFiles = [
     { name: 'Logistic Regression Pivot Table', path: 'Logistic Regression-pivottable.txt' },
     { name: 'Read CSV and Perform Data Pre Processing', path: 'Read CSV and Perform Data Pre-Pr.txt' },
     { name: 'Linear Regression VLOOKUP', path: 'Linear RegressionVLOOKUP.txt' },
-    { name: 'Linear Regression Goal Seek', path: 'Linear Regressionoalseek.txt' },
+    { name: 'Linear Regression Goal Seek', path: 'linreg.txt' },
     { name: 'Restaurant Waiting Decision Tree', path: 'Restaurant Waiting Decision Tree.txt' },
 
     { name: 'Decision Tree on Titanic Dataset', path: 'Decision Tree on Titanic Dataset.txt' },
@@ -40,6 +40,7 @@ pdfFiles.forEach((file) => {
 
     cyberGrid.appendChild(cyberCard);
 });
+
 
 
 
