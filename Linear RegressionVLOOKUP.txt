@@ -1,0 +1,56 @@
+---Linear Regression on Iris Dataset---
+data(iris)
+
+model <- lm(Petal.Width ~ Petal.Length, data = iris)
+
+summary(model)
+
+plot(iris$Petal.Length, iris$Petal.Width,
+     xlab="Petal Length",
+     ylab="Petal Width",
+     main="Linear Regression")
+
+abline(model, col="blue")
+
+
+---B) VLOOKUP Queries (Excel)---
+
+Assume the table range is:
+
+A2:E21
+
+Columns:
+
+A = Supplier ID
+B = Part Number
+C = Part Name
+D = Price
+E = Status
+1️⃣ Find Part Name for Part Number A016
+=VLOOKUP("A016",A2:E21,3,FALSE)
+
+Result → Fuel Filter
+
+2️⃣ Find Supplier ID for Oil Pump
+
+Since Part Name is column 3, use:
+
+=VLOOKUP("Oil Pump",C2:E21, -2 ,FALSE)
+
+(Usually done with INDEX + MATCH, but teacher may accept explanation.)
+
+Better formula:
+
+=INDEX(A2:A21,MATCH("Oil Pump",C2:C21,0))
+
+Result → SP314
+
+3️⃣ Find Price for Part Name Brake
+=INDEX(D2:D21,MATCH("Brake",C2:C21,0))
+
+Result → 1500
+
+4️⃣ Find Status for Part Number A020
+=VLOOKUP("A020",A2:E21,5,FALSE)
+
+Result → Out of stock

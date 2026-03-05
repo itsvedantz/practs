@@ -1,0 +1,27 @@
+---Decision Treetennieswind---
+data <- data.frame(
+  Outlook=c("Sunny","Sunny","Overcast","Rain","Rain","Rain","Overcast","Sunny","Sunny","Rain",
+            "Sunny","Overcast","Overcast","Rain","Sunny","Overcast","Overcast","Rain","Sunny","Rain"),
+  Wind=c("Weak","Strong","Weak","Weak","Weak","Strong","Strong","Weak","Weak","Weak",
+         "Strong","Strong","Weak","Strong","Weak","Strong","Weak","Weak","Weak","Strong"),
+  PlayTennis=c("No","No","Yes","Yes","Yes","No","Yes","No","Yes","Yes",
+               "Yes","Yes","Yes","No","Yes","No","Yes","No","No","Yes")
+)
+
+print(data)
+
+install.packages("rpart")
+library(rpart)
+library(rpart.plot)
+
+model <- rpart(PlayTennis ~ Outlook + Wind, data=data, method="class")
+
+print(model)
+
+rpart.plot(model)
+
+pred <- predict(model, data, type="class")
+
+print(pred)
+
+table(Predicted=pred, Actual=data$PlayTennis)
