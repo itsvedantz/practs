@@ -12,7 +12,7 @@ const pdfFiles = [
     { name: 'Decision Tree Tennis Wind', path: 'Decision Treettennieswind.txt' },
     { name: 'One Way ANOVA PCA on Wine Quality', path: 'One-WayANOVAPCAonWinequality.txt' },
     { name: 'Read CSV File into Data Frame', path: 'Read CSV File into Data Frame.txt' },
-    { name: 'Feature Dumification Logistic Regression', path: 'Feature Dumification logisticreg.txt' },
+    { name: 'Feature Dumification Logistic Regression', path: 'Feature Dummification logisticregre.txt' },
     { name: 'Feature Scaling PCA', path: 'Feature ScalingPCA.txt' },
     { name: 'Python Code Performs Logistic Regression', path: 'Python code performs Logistic Re.txt' },
     { name: 'Paired T-Test', path: 'Paired T-Test.txt' },
@@ -40,6 +40,7 @@ pdfFiles.forEach((file) => {
 
     cyberGrid.appendChild(cyberCard);
 });
+
 
 
 
