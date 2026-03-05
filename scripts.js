@@ -10,7 +10,7 @@ const pdfFiles = [
 
     { name: 'Decision Tree on Titanic Dataset', path: 'Decision Tree on Titanic Dataset.txt' },
     { name: 'Decision Tree Tennis Wind', path: 'Decision Treettennieswind.txt' },
-    { name: 'One Way ANOVA PCA on Wine Quality', path: 'Oneway.txt' },
+    { name: 'One Way ANOVA PCA on Wine Quality', path: 'oneway.txt' },
     { name: 'Read CSV File into Data Frame', path: 'Read CSV File into Data Frame.txt' },
     { name: 'Feature Dumification Logistic Regression', path: 'dummy2.txt' },
     { name: 'Feature Scaling PCA', path: 'Feature ScalingPCA.txt' },
@@ -40,6 +40,7 @@ pdfFiles.forEach((file) => {
 
     cyberGrid.appendChild(cyberCard);
 });
+
 
 
 
