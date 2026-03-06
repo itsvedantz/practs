@@ -1,0 +1,23 @@
+---Chi Square Test---
+
+aptitude <- c(85,65,50,68,87,74,65,96,68,94,73,84,85,87,91)
+
+jobprof <- c(70,90,80,89,88,86,78,67,86,90,92,94,99,93,87)
+
+tbl <- table(aptitude,jobprof)
+
+chisq.test(tbl)
+
+---Logistic Regression – Iris (Binary)---
+
+data(iris)
+
+iris$Species <- ifelse(iris$Species=="setosa",1,0)
+
+model <- glm(Species~Sepal.Length+Sepal.Width+Petal.Length+Petal.Width,family=binomial,data=iris)
+
+pred <- predict(model,type="response")
+
+class <- ifelse(pred>0.5,1,0)
+
+table(class,iris$Species)

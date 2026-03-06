@@ -1,0 +1,67 @@
+---Logistic Regression on Iris Dataset---
+data(iris)
+
+iris$Species <- ifelse(iris$Species=="setosa",1,0)
+
+model <- glm(Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width,
+             data=iris,
+             family=binomial)
+
+summary(model)
+
+pred_prob <- predict(model, type="response")
+
+pred_class <- ifelse(pred_prob > 0.5,1,0)
+
+conf_matrix <- table(Predicted=pred_class, Actual=iris$Species)
+
+print(conf_matrix)
+
+accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix)
+
+print(paste("Accuracy:", accuracy))
+
+
+---B) Pivot Table (Excel)---
+
+Dataset columns:
+
+Date | Color | Region | Units | Sales
+1️⃣ Total Sales
+
+Steps:
+
+Select dataset
+
+Go to Insert → Pivot Table
+
+Drag Sales → Values (Sum)
+
+Result → Total Sales
+
+2️⃣ Color-wise Sum of Sales
+
+Pivot settings:
+
+Rows → Color
+Values → Sales (Sum)
+
+3️⃣ Sum of Units
+
+Values → Units (Sum)
+
+4️⃣ Region-wise Total Sales and Units
+
+Rows → Region
+
+Values →
+
+Sales (Sum)
+Units (Sum)
+Pivot Chart
+
+Steps:
+
+Insert → Pivot Chart → Column Chart
+
+Use it to visualize Sales or Units by Region or Color.

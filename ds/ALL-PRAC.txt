@@ -1,0 +1,770 @@
+PRAC2
+#Prac2A read data from CSV and JSON files into a data frame.
+getwd()
+tuna <-read.csv("month.csv",TRUE,",")
+class(tuna)
+head(tuna)
+
+#JSON
+install.packages("rjson",dependencies = T)
+library(rjson)
+JsonData <- fromJSON(file ="sample2.json")
+print(JsonData)
+JsonData_To_DataFrame <- as.data.frame(JsonData)
+#Create a data frame
+data <- data.frame(
+  A = c(1,3,NA,7,8),
+  B = c(2,NA,7,9,10),
+  c = c(NA,7,9,2,1)
+)
+data
+
+#Finding missing values is data
+sum(is.na(data))
+
+#Finding missing values in columns
+colSums(is.na(data))
+
+#Install And Load Visdat packages
+install.packages("visdat")
+library(visdat)
+
+#PRAC2B-Perform basic data pre-processing task such as handling missing values and outliers.
+#Create data frame
+data <- data.frame(
+  A = c(1,NA,3,NA,6),
+  B = c(NA, 3,4,5,1),
+  C = c(1,3,5,6,NA)
+)
+vis_miss(data)
+#Remove missing values using na.omit function
+data <- na.omit(data)
+data
+
+#HANDLING OUTLIER
+set.seed(94211)
+x <-rnorm(1000)
+x[1:5] <- c(7,10,-3, 15, -11)
+boxplot(x)
+#REMOVE HANDLIER
+x_out_rm <- x[!x %in% boxplot.stats(x)$out]
+length(x) - length(x_out_rm)
+boxplot(x_out_rm)
+
+#PRAC2C-Manipulate and transform data using functions like filtering, sorting, and grouping.
+#Filter function
+ library(dplyr)
+ stats <- data.frame(player= c("Yuvraj","Meet","Bhushan","Surya"),
+                     runs = c(18,200,120,45),
+                     wickets = c(9,33,NA,2))
+ stats
+ filter(stats, runs> 100)
+ #SORT function
+ arr <-c(9,8,3,4,6,7,2,0,1)
+ sort(arr)
+ #Grouping function
+ library(dplyr)
+ df = read.csv("Sample_Superstore.csv")
+ df_grp_region = df%>%group_by(Region)%>%
+   summarise(total_sales=sum(Sales), total_profit = sum(Profit),.groups = 'drop')
+ View(df_grp_region)
+ #group_by()on multiple column
+ df = read.csv("Sample_Superstore.csv")
+ df_grp_reg_cat = df %>%
+   group_by(Region, Category) %>%
+   summarise(
+     total_Sales = sum(Sales, na.rm = TRUE),
+     total_Profit = sum(Profit, na.rm = TRUE),
+     .groups = "drop"
+   )
+ 
+ View(df_grp_reg_cat)
+
+------------------------------------------------------------------------------------------------------------------------------
+PRAC3
+#3A.	Apply feature-scaling techniques like standardization and normalization to numerical features.
+
+age <- c(19,20,21,22,23,24,24,26,27)
+
+salary <- c(10000,20000,30000,40000,
+            50000,60000,70000,80000,90000)
+
+df <- data.frame( "Age" = age,
+                  "Salary" = salary,
+                  stringsAsFactors = FALSE)
+df
+
+data <- data.frame(Age = rnorm(500, 50, 8),
+                   Weight = rnorm(500, 80, 10))
+data <- as.data.frame(sapply(df, function(x) 
+  (x-mean(x))/sd(x)))
+data
+
+#implement normalizatioN
+
+data2 <- data.frame(Age = rnorm(500, 50, 8),
+                    Weight = rnorm(500, 80, 10))
+data2 <- as.data.frame(sapply(df, function(x) 
+  (x-min(x))/(max(x)-min(x))))
+data2
+
+
+
+#3B.	Perform feature dummification to convert categorical variables into numerical representations.
+#•	One-Hot Encoding
+
+#On consider the following data frame as an illustration:
+  gender <-  c("male", "female", "male", "male", "female")
+age    <-  c(23, 34, 52, 21, 19)
+income <-  c(50000, 70000, 80000, 45000, 55000)
+df     <-  data.frame(gender, age, income)
+
+encoded_gender <- model.matrix(~gender-1, data=df)
+encoded_gender
+
+#•	Label Encoding
+  color <-  c("red", "green", "blue", "blue", "red")
+df    <-  data.frame(color)
+
+  df$color <-  as.integer(factor(df$color))
+df
+
+#•	Frequency Encoding
+  color <-  c("red", "green", "blue", "blue", "red")
+df    <-  data.frame(color)
+  freq_count  <-  table(df$color)
+df$color    <-  match(df$color, names(freq_count))
+freq_count
+
+-------------------------------------------------------------------------------------------------------------------------
+PRAC5 - ANOVA
+CODE:
+import scipy.stats as stats
+from statsmodels.stats.multicomp import pairwise_tukeyhsd
+
+group1=[23,25,29,34,30]
+group2=[43,19,22,20,18]
+group3=[15,18,20,21,17]
+group4=[28,24,30,29,26]
+
+all_data=group1+group2+group3+group4
+
+group_labels=['Group1']*len(group1) + ['Group2']*len(group2) +['Group3']*len(group3) + ['Group4']*len(group4)
+
+f_statistic, p_value=stats.f_oneway(group1,group2,group3,group4)
+
+print("One -way ANOVA:")
+print("F-staistic:", f_statistic)
+print("P-value:", p_value)
+
+tukey_results=pairwise_tukeyhsd(all_data,group_labels)
+
+print("\nTukeys-Kramer post-hoc test:")
+print(tukey_results)
+
+----------------------------------------------------------------------------------------------------------------------------
+PRAC-6
+#6A: Implement simple linear regression using a dataset.
+# Linear Regression
+# Height vector
+x <- c(153, 169, 140, 186, 128,
+       136, 178, 163, 152, 133)
+# Weight vector
+y <- c(64, 81, 58, 91, 47, 57,
+       75, 72, 62, 49)
+# Create a linear regression model
+model <- lm(y~x)
+# Print regression model
+print(model)
+# Find the weight of a person 
+# With height 182¬
+df <- data.frame(x = 182)
+res <- predict(model, df)
+cat("\nPredicted value of a person 
+			with height = 182")
+print(res)
+# Output to be present as PNG file
+png(file = "linearReg.png")
+# Plot
+plot(x, y, main = "Height vs Weight
+				Regression model")
+abline(lm(y~x))
+# Save the file.
+dev.off()
+
+#6B: Explore and interpret the regression model coefficients and goodness-of-fit measures.
+#How to Extract Regression Coefficients from lm() Function in R
+#create data frame
+df <- data.frame(rating=c(67, 75, 79, 85, 90, 96, 97),
+                 points=c(8, 12, 16, 15, 22, 28, 24),
+                 assists=c(4, 6, 6, 5, 3, 8, 7),
+                 rebounds=c(1, 4, 3, 3, 2, 6, 7))
+#fit multiple linear regression model
+model <- lm(rating ~ points + assists + rebounds, data=df)
+#view only regression c
+
+#Coefficients of model
+model$coefficients
+#view model summary
+summary(model)
+
+# Load necessary libraries
+library(ggplot2)
+
+# Generate example data
+set.seed(123)  # for reproducibility
+n <- 100
+X <- rnorm(n)
+Y <- 2*X + rnorm(n)
+
+# Fit linear regression model
+model <- lm(Y ~ X)
+
+# Calculate predictions
+predictions <- predict(model)
+
+# Plot observed vs. predicted values
+ggplot(data.frame(Observed = Y, Predicted = predictions), aes(x = Observed, y = Predicted)) +
+  geom_point() +
+  geom_abline(intercept = 0, slope = 1, color = "red") +  # Add 45-degree line for reference
+  labs(x = "Observed", y = "Predicted", title = "Observed vs. Predicted")
+# Calculate goodness-of-fit measures
+MSE <- mean((Y - predictions)^2)
+RMSE <- sqrt(MSE)
+MAE <- mean(abs(Y - predictions))
+R_squared <- summary(model)$r.squared
+# Print results
+cat("Mean Squared Error (MSE):", MSE, "\n")
+cat("Root Mean Squared Error (RMSE):", RMSE, "\n")
+cat("Mean Absolute Error (MAE):", MAE, "\n")
+cat("R-squared (RÂ²):", R_squared, "\n")
+
+#6C: Extend the analysis to multiple linear regression and assess the impact of
+#additional predictors.
+# R program to illustrate
+# Multiple Linear Regression
+# Using airquality dataset
+input <- airquality[1:50, 
+                    c("Ozone", "Wind", "Temp")]
+# Create regression model
+model <- lm(Ozone~Wind + Temp, 
+            data = input)
+
+# Print the regression model
+cat("Regression model:\n")
+print(model)
+
+# Output to be present as PNG file
+png(file = "multipleRegGFG.png")
+
+# Plot
+plot(model)
+
+# Save the file.
+dev.off()
+
+---------------------------------------------------------------------------------------------------------------------------------------
+PRAC-7
+#A.	Built a logistic regression model to predict a binary outcomes.
+# Installing the package
+install.packages("dplyr")
+
+# Loading package
+library(dplyr)
+
+# Summary of dataset in package
+summary(mtcars)
+
+# Installing the package
+
+# For Logistic regression
+install.packages("caTools") 
+
+# For ROC curve to evaluate model
+install.packages("ROCR")	 
+
+# Loading package
+library(caTools)
+library(ROCR)
+
+# Splitting dataset
+split <- sample.split(mtcars, SplitRatio = 0.8)
+split
+
+train_reg <- subset(mtcars, split == "TRUE")
+test_reg <- subset(mtcars, split == "FALSE")
+
+# Training model
+logistic_model <- glm(vs ~ wt + disp,
+                      data = train_reg,
+                      family = "binomial")
+logistic_model
+
+# Summary
+summary(logistic_model)
+
+predict_reg <- predict(logistic_model,
+                       test_reg, type = "response")
+predict_reg
+
+
+
+# Changing probabilities
+predict_reg <- ifelse(predict_reg >0.5, 1, 0)
+
+# Evaluating model accuracy
+# using confusion matrix
+table(test_reg$vs, predict_reg)
+
+missing_classerr <- mean(predict_reg != test_reg$vs)
+print(paste('Accuracy =', 1 - missing_classerr))
+
+# ROC-AUC Curve
+ROCPred <- prediction(predict_reg, test_reg$vs)
+ROCPer <- performance(ROCPred, measure = "tpr",
+                      x.measure = "fpr")
+
+auc <- performance(ROCPred, measure = "auc")
+auc <- auc@y.values[[1]]
+auc
+
+# Plotting curve
+plot(ROCPer)
+plot(ROCPer, colorize = TRUE,
+     print.cutoffs.at = seq(0.1, by = 0.1),
+     main = "ROC CURVE")
+abline(a = 0, b = 1)
+
+auc <- round(auc, 4)
+legend(.6, .4, auc, title = "AUC", cex = 1)
+
+#7B: Evaluate the models performance using classification metrics (e.g., precision, recall).
+install.packages("Metrics")
+install.packages("caret")
+
+# load metrics package
+library(Metrics)
+# Get the Recall
+recall = recall(actual = c(1,0,1,1,0),
+                predicted = c(1,0,0,0,1))
+print(recall)
+
+#•	Precision and F1 – Score
+# create predicted and actual class labels
+predicted <- c(1, 1, 1, 0, 0)
+actual <- c(1, 0, 1, 1, 1)
+xtab <- table(predicted, actual)
+library(caret)
+cm <- caret::confusionMatrix(xtab)
+cm
+
+library(Metrics)
+predicted <- c(1, 1, 0, 1, 0, 0, 0, 0, 1, 1)
+actual <- c(1, 0, 0, 1, 0, 0, 1, 1, 1, 1)
+
+# to calculate precision
+Metrics::recall(predicted, actual)
+
+# to calculate precision
+Metrics::precision(predicted, actual)
+
+# to calculate f1_score
+Metrics::f1(predicted, actual)
+
+#7C: Construct a decision tree model and interpret the decision rules for classification.
+
+# Install the package 
+install.packages("rpart") 
+
+
+# Load the package 
+library(rpart) 
+
+# Create decision tree using regression 
+fit <- rpart(Sepal.Width ~ Sepal.Length + 
+               Petal.Length + Petal.Width + Species,  
+             method = "anova", data = iris) 
+
+
+# Output to be present as PNG file 
+png(file = "decTreeGFG.png", width = 600,  
+    height = 600) 
+
+# Plot 
+plot(fit, uniform = TRUE, 
+     main = "Sepal Width Decision  
+                 Tree using Regression") 
+text(fit, use.n = TRUE, cex = .7) 
+
+# Saving the file 
+dev.off() 
+
+# Print model 
+print(fit) 
+
+# Create test data 
+df  <- data.frame (Species = 'versicolor',  
+                   Sepal.Length = 5.1, 
+                   Petal.Length = 4.5, 
+                   Petal.Width = 1.4) 
+
+# Predicting sepal width 
+# using testing data and model 
+# method anova is used for regression 
+cat("Predicted value:\n") 
+predict(fit, df, method = "anova") 
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+PRAC8
+#8A: Apply the K-Means algorithm to group similar data points into clusters.
+# Library required for fviz_cluster function
+install.packages("factoextra")
+library(factoextra)
+# Loading dataset
+df <- mtcars
+# Omitting any NA values
+df <- na.omit(df)
+# Scaling dataset
+df <- scale(df)
+# output to be present as PNG file 
+png(file = "KMeansExample14.png")
+km <- kmeans(df, centers = 4, nstart = 25)
+
+# Visualize the clusters
+fviz_cluster(km, data = df)
+
+# saving the file 
+dev.off()
+
+# output to be present as PNG file 
+png(file = "KMeansExample15.png")
+
+km <- kmeans(df, centers = 5, nstart = 25)
+
+# Visualize the clusters
+fviz_cluster(km, data = df)
+
+# saving the file 
+dev.off()
+
+#8B: Determine the optimal number of clusters using elbow method analysis.
+#load data
+df <- USArrests
+#remove rows with missing values
+df <- na.omit(df)
+#scale each variable to have a mean of 0 and sd of 1
+df <- scale(df)
+#view first six rows of dataset
+head(df)
+library(cluster)
+library(factoextra)
+fviz_nbclust(df, kmeans, method = "wss") 
+#make this example reproducible
+set.seed(1)
+#perform k-means clustering with k = 4 clusters
+km <- kmeans(df, centers = 4, nstart = 25)
+#view results
+km
+#add cluster assigment to original data
+final_data <- cbind(USArrests, cluster = km$cluster)
+
+#view final data
+head(final_data)
+
+------------------------------------------------------------------------------------------------------------
+PRAC9
+#9A: Evaluate the explained variance and select the appropriate number of principal components
+# Installing required package
+install.packages("dplyr")
+
+library(dplyr)
+
+install.packages("mtcars")
+
+str(mtcars)
+
+data(mtcars)
+
+my_pca = prcomp(mtcars, scale = TRUE,
+                center = TRUE, retx = T)
+names(my_pca)
+
+summary(my_pca)
+my_pca
+
+
+my_pca$rotation
+
+dim(my_pca$x)
+my_pca$x
+
+biplot(my_pca, main = "Biplot", scale = 0)
+
+my_pca$sdev
+
+my_pca.var= my_pca$sdev ^ 2
+my_pca.var
+
+propve = my_pca.var / sum(my_pca.var)
+propve
+
+# Plot variance explained for each principal component
+plot(propve, xlab = "principal component",
+     ylab = "Proportion of Variance Explained",
+     ylim = c(0, 1), type = "b",
+     main = "Scree Plot")
+
+# Plot the cumulative proportion of variance explained
+plot(cumsum(propve),
+     xlab = "Principal Component",
+     ylab = "Cumulative Proportion of Variance Explained",
+     
+     ylim = c(0, 1), type = "b")
+
+which(cumsum(propve) >= 0.9)[1]
+
+
+train.data = data.frame(disp = mtcars$disp, my_pca$x[, 1:4])
+# Running a Decision tree algporithm
+## Installing and loading packages
+install.packages("rpart")
+install.packages("rpart.plot")
+library(rpart)
+library(rpart.plot)
+rpart.model = rpart(disp ~ .,
+                    data = train.data, method = "anova")
+rpart.plot(rpart.model)
+
+#9c: Visualize the data in the reduced-dimensional space.
+#Generate data
+m=50
+n=100
+frac.gaps <- 0.5 
+N.S.ratio <- 0.25 
+
+x <- (seq(m)*2*pi)/m
+t <- (seq(n)*2*pi)/n
+
+
+Xt <- 
+  outer(sin(x), sin(t)) + 
+  outer(sin(2.1*x), sin(2.1*t)) + 
+  outer(sin(3.1*x), sin(3.1*t)) +
+  outer(tanh(x), cos(t)) + 
+  outer(tanh(2*x), cos(2.1*t)) + 
+  outer(tanh(4*x), cos(0.1*t)) + 
+  outer(tanh(2.4*x), cos(1.1*t)) + 
+  tanh(outer(x, t, FUN="+")) + 
+  tanh(outer(x, 2*t, FUN="+"))
+
+Xt <- t(Xt)
+
+res <- prcomp(Xt, center = TRUE, scale = FALSE)
+names(res)
+res$sdev
+length(res$sdev)
+res$rotation
+dim(res$rotation)
+res$x
+dim(res$x)
+pc.use <- 3 # explains 93% of variance
+trunc <- res$x[,1:pc.use] %*% t(res$rotation[,1:pc.use])
+
+if(all(res$scale != FALSE)){
+  trunc <- scale(trunc, center = FALSE , scale=1/res$scale)
+}
+if(all(res$center != FALSE)){
+  trunc <- scale(trunc, center = -1 * res$center, scale=FALSE)
+}
+dim(trunc); dim(Xt)
+RAN <- range(cbind(Xt, trunc))
+BREAKS <- seq(RAN[1], RAN[2],,100)
+COLS <- rainbow(length(BREAKS)-1)
+par(mfcol=c(1,2), mar=c(1,1,2,1))
+image(Xt, main="Original matrix", xlab="", ylab="", xaxt="n", yaxt="n", breaks=BREAKS, col=COLS)
+box()
+image(trunc, main="Truncated matrix (3 PCs)", xlab="", ylab="", xaxt="n", yaxt="n", breaks=BREAKS, col=COLS)
+box()
+-----------------------------------------------------------------------------------------------------------------
+PRAC10-PDF
+#Practical No: 10
+#Aim: Data Visualization and Storytelling
+#A.	Create meaningful visualizations using data visualization tools.
+
+1.	Bar Plot
+# Horizontal Bar Plot for  
+# Ozone concentration in air 
+barplot(airquality$Ozone, 
+        main = 'Ozone Concenteration in air', 
+        xlab = 'ozone levels', horiz = TRUE)
+# Vertical Bar Plot for  
+# Ozone concentration in air 
+barplot(airquality$Ozone, main = 'Ozone Concenteration in air',  
+        xlab = 'ozone levels', col ='blue', horiz = FALSE) 
+
+2.	Histogram
+# Histogram for Maximum Daily Temperature 
+data(airquality) 
+hist(airquality$Temp, main ="La Guardia Airport's\ 
+Maximum Temperature(Daily)", 
+     xlab ="Temperature(Fahrenheit)", 
+     xlim = c(50, 125), col ="yellow", 
+     freq = TRUE) 
+
+3.	Box Plot
+# Box plot for average wind speed 
+data(airquality) 
+boxplot(airquality$Wind, main = "Average wind speed\ 
+at La Guardia Airport", 
+        xlab = "Miles per hour", ylab = "Wind", 
+        col = "orange", border = "brown", 
+        horizontal = TRUE, notch = TRUE) 
+# Multiple Box plots, each representing 
+# an Air Quality Parameter 
+boxplot(airquality[, 0:4],  
+        main ='Box Plots for Air Quality Parameters') 
+
+4.	Scatter Plot
+# Scatter plot for Ozone Concentration per month 
+data(airquality) 
+plot(airquality$Ozone, airquality$Month, 
+     main ="Scatterplot Example", 
+     xlab ="Ozone Concentration in parts per billion", 
+     ylab =" Month of observation ", pch = 19)
+
+5.	Heat Map:
+  # Set seed for reproducibility 
+  # set.seed(110) 
+  
+  # Create example data 
+  data <- matrix(rnorm(50, 0, 5), nrow = 5, ncol = 5) 
+
+# Column names 
+colnames(data) <- paste0("col", 1:5) 
+rownames(data) <- paste0("row", 1:5) 
+
+# Draw a heatmap 
+heatmap(data)         
+
+#10B.	Combine multiple visualizations to tell a compelling data story.
+#ggplot2
+
+#install ggplot2
+install.packages('ggplot2')
+
+#load library
+library(ggplot2)
+#Wide form dataset
+head(economics)
+
+#Long form dataset
+head(economics_long)
+
+
+#create a ggplot area and add specific geoms
+colnames(data)
+ggplot(data, aes(x = Age, y = Salary)) +
+  geom_point(color = "blue")
+#Line graph with economics_long
+#x = date variable
+#y = value to be graphed
+#group = variable label since data is in long form
+ggplot(economics_long, aes(x=date, y=value01, color=variable, group=variable)) + geom_line()
+
+#example as area graphs
+ggplot(economics_long, aes(x=date, y=value01,color=variable, group=variable)) + geom_area()
+
+
+----------------------------------------------------------------------------------------------------------------
+PRAC10-FILE-PYTHON
+CODE:
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+import pandas as pd
+from sklearn.cluster import KMeans
+
+df = pd.DataFrame({
+    'gender': ['Male', 'Female', 'Female', 'Male', 'Male'],
+    'churn': ['Yes', 'No', 'Yes', 'No', 'Yes'],
+    'age': [25, 42, 32, 30, 35],
+    'service_type': ['Permanent Staffing', 'Contract Staffing', 'Part-Time Staffing',
+                     'Freelance', 'Temporary'],
+    'tenure': [2, 6, 10, 5, 7]
+})
+
+# 1. Churn rate by gender
+sns.countplot(data=df, x='gender', hue='churn')
+plt.title("Churn rate by gender")
+plt.show()
+
+# 2. Churn rate by age group (Plotly)
+fig = px.histogram(
+    df,
+    x='age',
+    color='churn',
+    nbins=20,
+    histnorm='percent'
+)
+
+fig.update_layout(
+    title='Churn rate by age group',
+    xaxis_title='Age',
+    yaxis_title='Percentage of customers'
+)
+
+fig.show()
+
+# 3. Correlation matrix
+# Convert churn to numeric if needed
+df['churn_numeric'] = df['churn'].map({'Yes': 1, 'No': 0})
+
+correlation_matrix = df.select_dtypes(include='number').corr()
+
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
+plt.title('Correlation matrix')
+plt.show()
+
+# 4. Customer tenure vs churn (Plotly)
+fig = px.scatter(
+    df,
+    x='tenure',
+    y='churn_numeric',
+    color='churn'
+)
+
+fig.update_layout(
+    title='Customer Tenure vs Churn',
+    xaxis_title='Tenure',
+    yaxis_title='Churn (1 = Yes, 0 = No)'
+)
+
+fig.show()
+
+# 5. Select numerical features
+X = df[['age', 'tenure']]
+
+# Apply KMeans
+kmeans = KMeans(n_clusters=2, random_state=42, n_init=10)
+df['cluster'] = kmeans.fit_predict(X)
+
+fig = px.scatter(
+    df,
+    x='age',
+    y='tenure',
+    color='cluster',
+    title='Customer Segmentation using KMeans'
+)
+
+print(df.groupby('cluster')[['age', 'tenure']].mean())
+
+fig.show()
+
+
+
+
+
+
+
+
+
