@@ -1,0 +1,21 @@
+public class P1Client {
+    public static void main(String[] args) {
+        try {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Enter Rs to convert into Dollar : ");
+            double rs = sc.nextDouble();
+            double dollar = rsToDollar(rs);
+            System.out.println("Rs. " + rs + " in Dollar are " + String.format("%.2f", dollar));
+        }
+        catch(Exception e) {
+
+        }
+    }
+
+    private static Double rsToDollar(double value) {
+        com.currencyconverter.CurrencyConverter_Service service =
+                new com.currencyconverter.CurrencyConverter_Service();
+        com.currencyconverter.CurrencyConverter port = service.getCurrencyConverterPort();
+        return port.rsToDollar(value);
+    }
+}
