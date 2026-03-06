@@ -46,6 +46,12 @@ const files = [
         type: "file",
         path: "mtom.pdf",
     },
+
+        {
+        name: "Soap 10 slips",
+        type: "file",
+        path: "soapslips.pdf"
+    },
     
     {
         name: "Curd",
@@ -90,6 +96,7 @@ files.forEach((file) => {
 
     cyberGrid.appendChild(cyberCard);
 });
+
 
 
 
