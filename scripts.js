@@ -19,7 +19,7 @@ const pdfFiles = [
     { name: 'Chi Square Test Logistic', path: 'Chi Square Test-logistic.txt' },
     { name: 'One Sample T-Test Feature Scaling', path: 'One Sample T-Test-featurescaling.txt' },
     { name: 'filecodes', path: 'ALL-PRAC.txt' },
-    { name: 'Prime number', path: 'primenum.txt' },
+    { name: 'Curd', path: 'curd.txt' },
     { name: 'currencyconvert', path: 'dhruv.txt' }
     // Add more file paths as needed
 ];
@@ -42,6 +42,7 @@ pdfFiles.forEach((file) => {
 
     cyberGrid.appendChild(cyberCard);
 });
+
 
 
 
