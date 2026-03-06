@@ -36,7 +36,7 @@ const files = [
 
             
     {
-        name: "Python Full Course",
+        name: "google map",
         type: "youtube",
         id: "01krzNSRK-o"
     },
@@ -91,4 +91,5 @@ files.forEach((file) => {
 
     cyberGrid.appendChild(cyberCard);
 });
+
 
