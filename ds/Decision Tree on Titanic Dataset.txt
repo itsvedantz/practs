@@ -40,10 +40,10 @@ cars_buy <- car_data[car_data$BuyPrice >= 3000, ]
 
 print(cars_buy)
 
-sorted_data <- car_data[order(car_data$BuyPrice), ]
+sorted_data <- car_data[order(car_data$Buy.Price), ]
 
 print(sorted_data)
 
-group_data <- aggregate(BuyPrice ~ Model, data=car_data, FUN=mean)
+group_data <- aggregate(Buy.Price ~ Model, data=car_data, FUN=mean)
 
 print(group_data)
