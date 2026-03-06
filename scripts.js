@@ -20,24 +20,33 @@ const files = [
         id: "fjpCtcJ9oog"
     },
 
-        {
+        
+    {
         name: "CRUD Operations",
         type: "youtube",
         id: "l-Ry3BxiNh4"
     },
 
-        {
+       
+    {
         name: "Download Image From Server Using MTOM",
         type: "youtube",
         id: "FhOLswDbfSQ"
     },
 
-            {
+            
+    {
         name: "Python Full Course",
         type: "youtube",
         id: "01krzNSRK-o"
     },
 
+    {
+        name: "MTOM",
+        type: "file",
+        path: "mtom.pdf",
+    },
+    
     {
         name: "Curd",
         type: "file",
@@ -82,3 +91,4 @@ files.forEach((file) => {
 
     cyberGrid.appendChild(cyberCard);
 });
+
