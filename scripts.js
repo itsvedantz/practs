@@ -84,12 +84,12 @@ files.forEach((file) => {
         const link = document.createElement('a');
         link.href = file.path;
         link.innerText = "Open File";
-        link.target = "_blank";
 
         cyberCard.appendChild(link);
     }
 
     cyberGrid.appendChild(cyberCard);
 });
+
 
 
