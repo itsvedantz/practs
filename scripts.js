@@ -1,57 +1,84 @@
 const cyberGrid = document.querySelector('.cyber-grid');
 
-// Assuming you have an array of PDF file paths
-const pdfFiles = [
-    { name: '', path: '' },
+const files = [
 
-    // Add more file paths as needed
+    {
+        name: "Creating SOAP Web Service using Java",
+        type: "youtube",
+        id: "hM1xBlNaZv0"
+    },
+
+    {
+        name: "Creating and Consuming Java Web Service",
+        type: "youtube",
+        id: "JL5clLdulrE"
+    },
+
+    {
+        name: "Creating Web Service in Java and Consuming in .Net",
+        type: "youtube",
+        id: "fjpCtcJ9oog"
+    },
+
+        {
+        name: "CRUD Operations",
+        type: "youtube",
+        id: "l-Ry3BxiNh4"
+    },
+
+        {
+        name: "Download Image From Server Using MTOM",
+        type: "youtube",
+        id: "FhOLswDbfSQ"
+    },
+
+            {
+        name: "Python Full Course",
+        type: "youtube",
+        id: "01krzNSRK-o"
+    },
+
+    {
+        name: "Curd",
+        type: "file",
+        path: "Curd.txt"
+    }
+
 ];
 
-pdfFiles.forEach((file) => {
+files.forEach((file) => {
+
     const cyberCard = document.createElement('div');
     cyberCard.classList.add('cyber-card');
 
-    const link = document.createElement('a');
-    link.href = file.path;
-    link.textContent = file.name;
-    link.classList.add('file-name');
+    const title = document.createElement('h3');
+    title.innerText = file.name;
 
-    const fileSize = document.createElement('p');
-    fileSize.classList.add('file-size');
-    fileSize.textContent = file.size;
+    cyberCard.appendChild(title);
 
-    cyberCard.appendChild(link);
-    cyberCard.appendChild(fileSize);
+    if (file.type === "youtube") {
+
+        const iframe = document.createElement('iframe');
+
+        iframe.src = `https://www.youtube.com/embed/${file.id}`;
+        iframe.width = "100%";
+        iframe.height = "200";
+        iframe.allowFullscreen = true;
+        iframe.frameBorder = "0";
+
+        cyberCard.appendChild(iframe);
+
+    }
+
+    if (file.type === "file") {
+
+        const link = document.createElement('a');
+        link.href = file.path;
+        link.innerText = "Open File";
+        link.target = "_blank";
+
+        cyberCard.appendChild(link);
+    }
 
     cyberGrid.appendChild(cyberCard);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
