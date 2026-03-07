@@ -18,6 +18,7 @@ const pdfFiles = [
     { name: 'Paired T-Test', path: 'Paired T-Test.txt' },
     { name: 'Chi Square Test Logistic', path: 'Chi Square Test-logistic.txt' },
     { name: 'One Sample T-Test Feature Scaling', path: 'One Sample T-Test-featurescaling.txt' },
+    { name: 'PCA on wine quality', path: 'winequality.txt' },
     { name: 'filecodes', path: 'ALL-PRAC.txt' },
     { name: 'Curd', path: 'Curd.txt' },
     { name: 'currencyconvert', path: 'dhruv.txt' }
@@ -42,6 +43,7 @@ pdfFiles.forEach((file) => {
 
     cyberGrid.appendChild(cyberCard);
 });
+
 
 
 
