@@ -1,0 +1,62 @@
+# Install packages (run once if not installed)
+install.packages("tidyverse")
+install.packages("factoextra")
+
+# Load libraries
+library(tidyverse)
+library(factoextra)
+
+
+# Make sure winequality-red.csv is in your working directory
+wine <- read.csv("winequality-red.csv", sep=";")
+
+# Display first few rows
+head(wine)
+
+# Check structure of dataset
+str(wine)
+
+
+# Remove target variable (quality) for PCA
+wine_features <- wine[, -12]
+
+# Standardize the data
+wine_scaled <- scale(wine_features)
+
+
+pca_result <- prcomp(wine_scaled, center = TRUE, scale. = TRUE)
+
+# PCA summary
+summary(pca_result)
+
+
+fviz_eig(pca_result, addlabels = TRUE, ylim = c(0, 50))
+
+
+fviz_pca_ind(pca_result,
+             geom.ind = "point",
+             col.ind = wine$quality,
+             palette = "jco",
+             addEllipses = TRUE,
+             legend.title = "Wine Quality")
+
+
+fviz_pca_var(pca_result,
+             col.var = "contrib",
+             gradient.cols = c("blue", "yellow", "red"),
+             repel = TRUE)
+
+
+wine_pca <- data.frame(pca_result$x[,1:2])
+
+# Add quality label for visualization
+wine_pca$quality <- wine$quality
+
+
+ggplot(wine_pca, aes(x = PC1, y = PC2, color = factor(quality))) +
+  geom_point(size = 2) +
+  labs(title = "PCA Visualization of Wine Dataset",
+       x = "Principal Component 1",
+       y = "Principal Component 2",
+       color = "Quality") +
+  theme_minimal()
