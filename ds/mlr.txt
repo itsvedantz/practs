@@ -1,0 +1,51 @@
+# Multiple Linear Regression on Pima Indians Diabetes Dataset
+
+# Install required packages (run once)
+install.packages("mlbench")
+install.packages("ggplot2")
+
+# Load libraries
+library(mlbench)
+library(ggplot2)
+
+# Load dataset
+data(PimaIndiansDiabetes)
+
+# View first few rows
+head(PimaIndiansDiabetes)
+
+# Check dataset structure
+str(PimaIndiansDiabetes)
+
+# Convert diabetes outcome to numeric (0 and 1)
+PimaIndiansDiabetes$Outcome <- ifelse(PimaIndiansDiabetes$diabetes == "pos", 1, 0)
+
+# Build Multiple Linear Regression Model
+model <- lm(Outcome ~ pregnant + glucose + pressure + triceps + insulin + mass + pedigree + age,
+            data = PimaIndiansDiabetes)
+
+# Display model summary
+summary(model)
+
+# Generate predictions
+predicted_values <- predict(model, PimaIndiansDiabetes)
+
+# View first few predicted values
+head(predicted_values)
+
+# Plot Actual vs Predicted values
+plot(PimaIndiansDiabetes$Outcome,
+     predicted_values,
+     xlab = "Actual Outcome",
+     ylab = "Predicted Outcome",
+     main = "Actual vs Predicted Values",
+     col = "blue")
+
+# Add reference line
+abline(0,1,col="red")
+
+# Optional: Visualize relationship between glucose and outcome
+ggplot(PimaIndiansDiabetes, aes(x = glucose, y = Outcome)) +
+  geom_point(color = "darkgreen") +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
+  ggtitle("Glucose vs Diabetes Outcome")
