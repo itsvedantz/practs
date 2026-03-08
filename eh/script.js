@@ -20,8 +20,8 @@ const pdfFiles = [
     { name: 'Vector Space Model with TF-IDF, Clustering Algorithm', path: 'Slip_16.txt' },
     { name: 'PageRank Algorithm, Boolean Retrieval Model', path: 'Slip_17.txt' },
     { name: 'Question Answering System, Text Summarization', path: 'Slip_18.txt' },
-    { name: 'Slip 19', path: 'Slip_19.txt' },
-    { name: 'Slip 20', path: 'Slip_20.txt' }
+    { name: 'IR manualf', path: 'IR manual.pdf' },
+
     // Add more file paths as needed
 ];
 
@@ -43,6 +43,7 @@ pdfFiles.forEach((file) => {
 
     cyberGrid.appendChild(cyberCard);
 });
+
 
 
 
