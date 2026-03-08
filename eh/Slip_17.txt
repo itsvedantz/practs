@@ -1,25 +1,65 @@
+A. Apply PageRank Algorithm and Analyze Results
+pages = ["A","B","C","D","E"]
 
-Slip 17
+links = {
+"A":["B","C","D"],
+"B":["C","E"],
+"C":["A","D"],
+"D":[],
+"E":[]
+}
 
-Question:
-Refer to the question provided in the practical slip PDF.
+N = len(pages)
+d = 0.85
 
-Answer (Python Implementation Example):
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+pagerank = {page:1/N for page in pages}
 
-docs=[
-"sample document one",
-"sample document two",
-"sample document three"
-]
+for i in range(10):
 
-vectorizer=TfidfVectorizer()
-tfidf=vectorizer.fit_transform(docs)
+    new_rank = {}
 
-query=["sample"]
-q_vec=vectorizer.transform(query)
+    for page in pages:
 
-similarity=cosine_similarity(q_vec,tfidf)
+        rank_sum = 0
 
-print(similarity)
+        for p in pages:
+
+            if page in links[p] and len(links[p])>0:
+                rank_sum += pagerank[p] / len(links[p])
+
+        new_rank[page] = (1-d)/N + d*rank_sum
+
+    pagerank = new_rank
+
+print("PageRank Values")
+
+B. Implement Boolean Retrieval Model
+documents = {
+"doc1":"The university exam is scheduled next week",
+"doc2":"The university of mumbai has declared the result"
+}
+
+inverted_index = {}
+
+for doc_id,text in documents.items():
+
+    words = text.lower().split()
+
+    for word in words:
+
+        if word not in inverted_index:
+            inverted_index[word] = set()
+
+        inverted_index[word].add(doc_id)
+
+query_terms = ["university","mumbai"]
+
+result = inverted_index[query_terms[0]]
+
+for term in query_terms[1:]:
+    result = result.intersection(inverted_index.get(term,set()))
+
+print("Documents satisfying query:", result)
+
+for page in pagerank:
+    print(page,"=",pagerank[page])
