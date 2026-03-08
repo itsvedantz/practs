@@ -2,27 +2,26 @@ const cyberGrid = document.querySelector('.cyber-grid');
 
 // Assuming you have an array of PDF file paths
 const pdfFiles = [
-    { name: 'Logistic Regression Pivot Table', path: 'Logistic Regression-pivottable.txt' },
-    { name: 'Read CSV and Perform Data Pre Processing', path: 'Read CSV and Perform Data Pre-Pr.txt' },
-    { name: 'Linear Regression VLOOKUP', path: 'Linear RegressionVLOOKUP.txt' },
-    { name: 'Linear Regression Goal Seek', path: 'linreg.txt' },
-    { name: 'Restaurant Waiting Decision Tree', path: 'Restaurant Waiting Decision Tree.txt' },
-
-    { name: 'Decision Tree on Titanic Dataset', path: 'Decision Tree on Titanic Dataset.txt' },
-    { name: 'Decision Tree Tennis Wind', path: 'teniswind.txt' },
-    { name: 'One Way ANOVA PCA on Wine Quality', path: 'oneway.txt' },
-    { name: 'Read CSV File into Data Frame', path: 'Read CSV File into Data Frame.txt' },
-    { name: 'Feature Dumification Logistic Regression', path: 'dummy2.txt' },
-    { name: 'Feature Scaling PCA', path: 'Feature ScalingPCA.txt' },
-    { name: 'Python Code Performs Logistic Regression', path: 'Python code performs Logistic Re.txt' },
-    { name: 'Paired T-Test', path: 'Paired T-Test.txt' },
-    { name: 'Chi Square Test Logistic', path: 'Chi Square Test-logistic.txt' },
-    { name: 'One Sample T-Test Feature Scaling', path: 'One Sample T-Test-featurescaling.txt' },
-    { name: 'PCA on wine quality', path: 'winequality.txt' },
-    { name: 'multiple linear regression', path: 'mlr.txt' },
-    { name: 'filecodes', path: 'ALL-PRAC.txt' },
-    { name: 'Curd', path: 'Curd.txt' },
-    { name: 'currencyconvert', path: 'dhruv.txt' }
+    { name: 'Slip 1', path: 'Slip_1.txt' },
+    { name: 'Slip 2', path: 'Slip_2.txt' },
+    { name: 'Slip 3', path: 'Slip_3.txt' },
+    { name: 'Slip 4', path: 'Slip_4.txt' },
+    { name: 'Slip 5', path: 'Slip_5.txt' },
+    { name: 'Slip 6', path: 'Slip_6.txt' },
+    { name: 'Slip 7', path: 'Slip_7.txt' },
+    { name: 'Slip 8', path: 'Slip_8.txt' },
+    { name: 'Slip 9', path: 'Slip_9.txt' },
+    { name: 'Slip 10', path: 'Slip_10.txt' },
+    { name: 'Slip 11', path: 'Slip_11.txt' },
+    { name: 'Slip 12', path: 'Slip_12.txt' },
+    { name: 'Slip 13', path: 'Slip_13.txt' },
+    { name: 'Slip 14', path: 'Slip_14.txt' },
+    { name: 'Slip 15', path: 'Slip_15.txt' },
+    { name: 'Slip 16', path: 'Slip_16.txt' },
+    { name: 'Slip 17', path: 'Slip_17.txt' },
+    { name: 'Slip 18', path: 'Slip_18.txt' },
+    { name: 'Slip 19', path: 'Slip_19.txt' },
+    { name: 'Slip 20', path: 'Slip_20.txt' }
     // Add more file paths as needed
 ];
 
@@ -44,6 +43,7 @@ pdfFiles.forEach((file) => {
 
     cyberGrid.appendChild(cyberCard);
 });
+
 
 
 
