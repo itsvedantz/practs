@@ -1,0 +1,49 @@
+
+Slip 2
+
+Question A:
+Implement an inverted index construction algorithm for the following two documents:
+document1 = "The quick brown fox jumped over the lazy dog"
+document2 = "The lazy dog slept in the sun"
+Build a simple document retrieval system using the constructed index to find the documents containing terms “lazy sun”.
+
+Answer A:
+import re
+
+docs=[
+"The quick brown fox jumped over the lazy dog",
+"The lazy dog slept in the sun"
+]
+
+index={}
+
+for i,d in enumerate(docs):
+    words=re.findall(r'\w+',d.lower())
+    for w in words:
+        index.setdefault(w,set()).add(i+1)
+
+query=["lazy","sun"]
+res=set(index[query[0]])
+
+for q in query[1:]:
+    res=res.intersection(index[q])
+
+print(index)
+print(res)
+
+
+Question B:
+Write a program to calculate precision, recall and F-measure where true positive is 60, false positive is 30 and false negative is 20.
+
+Answer B:
+tp=60
+fp=30
+fn=20
+
+precision=tp/(tp+fp)
+recall=tp/(tp+fn)
+f=2*(precision*recall)/(precision+recall)
+
+print("Precision:",precision)
+print("Recall:",recall)
+print("F-measure:",f)

@@ -1,0 +1,51 @@
+
+Slip 1
+
+Question A:
+Implement an inverted index construction algorithm for the following two documents
+document1 = "The computer science students are appearing for practical examination."
+document2 = "computer science practical examination will start tomorrow."
+Build a simple document retrieval system using the constructed index to find the documents containing terms “computer science”.
+
+Answer A:
+import re
+
+doc1="The computer science students are appearing for practical examination"
+doc2="computer science practical examination will start tomorrow"
+
+docs=[doc1.lower(),doc2.lower()]
+
+index={}
+
+for i,d in enumerate(docs):
+    words=re.findall(r'\w+',d)
+    for w in words:
+        if w not in index:
+            index[w]=set()
+        index[w].add(i+1)
+
+query=["computer","science"]
+result=set(index[query[0]])
+
+for q in query[1:]:
+    result=result.intersection(index[q])
+
+print(index)
+print("Documents:",result)
+
+
+Question B:
+Build a question-answering system using techniques such as information extraction.
+
+Answer B:
+corpus=[
+"India capital is New Delhi",
+"Mumbai is financial capital of India",
+"Python is a programming language"
+]
+
+question="What is capital of India"
+
+for s in corpus:
+    if "capital" in s and "India" in s:
+        print("Answer:",s)
