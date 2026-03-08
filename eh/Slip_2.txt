@@ -1,49 +1,53 @@
+A. Implement an Inverted Index Construction Algorithm
+documents = {
+"doc1": "The quick brown fox jumped over the lazy dog",
+"doc2": "The lazy dog slept in the sun"
+}
 
-Slip 2
+inverted_index = {}
 
-Question A:
-Implement an inverted index construction algorithm for the following two documents:
-document1 = "The quick brown fox jumped over the lazy dog"
-document2 = "The lazy dog slept in the sun"
-Build a simple document retrieval system using the constructed index to find the documents containing terms “lazy sun”.
+for doc_id, text in documents.items():
 
-Answer A:
-import re
+    words = text.lower().split()
 
-docs=[
-"The quick brown fox jumped over the lazy dog",
-"The lazy dog slept in the sun"
-]
+    for word in words:
 
-index={}
+        if word not in inverted_index:
+            inverted_index[word] = set()
 
-for i,d in enumerate(docs):
-    words=re.findall(r'\w+',d.lower())
-    for w in words:
-        index.setdefault(w,set()).add(i+1)
+        inverted_index[word].add(doc_id)
 
-query=["lazy","sun"]
-res=set(index[query[0]])
+print("Inverted Index:\n")
 
-for q in query[1:]:
-    res=res.intersection(index[q])
+for term, docs in inverted_index.items():
+    print(term, ":", docs)
 
-print(index)
-print(res)
+query = ["lazy","sun"]
+
+result = inverted_index[query[0]]
+
+for term in query[1:]:
+    result = result.intersection(inverted_index.get(term,set()))
+
+print("Documents containing 'lazy sun':", result)
 
 
-Question B:
-Write a program to calculate precision, recall and F-measure where true positive is 60, false positive is 30 and false negative is 20.
+B. Program to Calculate Precision, Recall and F-Measure
 
-Answer B:
-tp=60
-fp=30
-fn=20
+tp = 60
+fp = 30
+fn = 20
 
-precision=tp/(tp+fp)
-recall=tp/(tp+fn)
-f=2*(precision*recall)/(precision+recall)
+precision = tp / (tp + fp)
 
-print("Precision:",precision)
-print("Recall:",recall)
-print("F-measure:",f)
+recall = tp / (tp + fn)
+
+f_measure = 2 * (precision * recall) / (precision + recall)
+
+print("True Positive =", tp)
+print("False Positive =", fp)
+print("False Negative =", fn)
+
+print("Precision =", precision)
+print("Recall =", recall)
+print("F-measure =", f_measure)
