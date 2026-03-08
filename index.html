@@ -1,26 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Cyber Code Vault</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>Premium Study Material 💰</title>
+
+<style>
+
+body{
+    background:#0f172a;
+    font-family:Arial;
+    color:white;
+    text-align:center;
+    padding:40px;
+}
+
+.container{
+    background:#1e293b;
+    padding:30px;
+    border-radius:15px;
+    max-width:500px;
+    margin:auto;
+    box-shadow:0 0 20px rgba(0,0,0,0.6);
+}
+
+h1{
+    color:#38bdf8;
+}
+
+.qr{
+    width:220px;
+    margin:20px;
+}
+
+button{
+    padding:12px 20px;
+    margin:10px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.pay{
+    background:#22c55e;
+    color:white;
+}
+
+.gareeb{
+    background:#ef4444;
+    color:white;
+}
+
+#content{
+    display:none;
+    margin-top:20px;
+}
+
+#meme{
+    display:none;
+    margin-top:20px;
+}
+
+img{
+    max-width:100%;
+    border-radius:10px;
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="cyber-background"></div>
+<div class="container">
 
-<div class="cyber-container">
+<h1>📚 Premium Study Material</h1>
 
-    <h1 class="cyber-title">CYBER CODE VAULT</h1>
+<p>
+This website contains <b>TOP SECRET EXAM MATERIAL</b> 🤫  
+Access Fee: <b>₹100</b>
+</p>
 
-    <div class="cyber-grid">
-        <!-- Cards generated from JS -->
-    </div>
+<p>
+Scan QR and pay ₹100 to unlock knowledge 🧠✨
+</p>
+
+<img src="qrcode.jpeg" class="qr">
+
+<br>
+
+<button class="gareeb" onclick="gareeb()">Gareeb hu bhai</button>
+
+<div id="content">
+
+<h2>Welcome Rich Student 💰</h2>
+
+<p>Congratulations! You unlocked the study material.</p>
+
+<a href="study.html">Open Study Material</a>
 
 </div>
 
-<script src="scripts.js"></script>
+<div id="meme">
+
+<h2>Bhai padhai free nahi hoti 😭</h2>
+
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDZqc2Vzd2RnZmRqZHgzZno1NDRmNG81a3dyNTh3OHN0dGxwNjN3dSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wy2ApzQIzV1S6dijAN/giphy.gif">
+
+<p>₹100 bhej aur wapas aa 😤</p>
+
+</div>
+
+</div>
+
+<script>
+
+function unlock(){
+    document.getElementById("content").style.display="block";
+}
+
+function gareeb(){
+    document.getElementById("meme").style.display="block";
+}
+
+</script>
 
 </body>
 </html>
