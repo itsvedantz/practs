@@ -1,51 +1,61 @@
+A. Implement an Inverted Index Construction Algorithm
+documents = {
+"doc1": "The computer science students are appearing for practical examination",
+"doc2": "computer science practical examination will start tomorrow"
+}
 
-Slip 1
+inverted_index = {}
 
-Question A:
-Implement an inverted index construction algorithm for the following two documents
-document1 = "The computer science students are appearing for practical examination."
-document2 = "computer science practical examination will start tomorrow."
-Build a simple document retrieval system using the constructed index to find the documents containing terms “computer science”.
+for doc_id, text in documents.items():
 
-Answer A:
-import re
+    words = text.lower().split()
 
-doc1="The computer science students are appearing for practical examination"
-doc2="computer science practical examination will start tomorrow"
+    for word in words:
 
-docs=[doc1.lower(),doc2.lower()]
+        if word not in inverted_index:
+            inverted_index[word] = set()
 
-index={}
+        inverted_index[word].add(doc_id)
 
-for i,d in enumerate(docs):
-    words=re.findall(r'\w+',d)
-    for w in words:
-        if w not in index:
-            index[w]=set()
-        index[w].add(i+1)
+print("Inverted Index:\n")
 
-query=["computer","science"]
-result=set(index[query[0]])
+for term, docs in inverted_index.items():
+    print(term, ":", docs)
 
-for q in query[1:]:
-    result=result.intersection(index[q])
+query = ["computer", "science"]
 
-print(index)
-print("Documents:",result)
+result = inverted_index[query[0]]
 
+for term in query[1:]:
+    result = result.intersection(inverted_index.get(term, set()))
 
-Question B:
-Build a question-answering system using techniques such as information extraction.
+print("Documents containing 'computer science':", result)
 
-Answer B:
-corpus=[
-"India capital is New Delhi",
-"Mumbai is financial capital of India",
-"Python is a programming language"
+B. Build a Question Answering System (Information Extraction)
+knowledge_base = [
+"Tiger is the national animal of India",
+"Peacock is the national bird of India",
+"Mango is the national fruit of India"
 ]
 
-question="What is capital of India"
+query = "national bird of India"
 
-for s in corpus:
-    if "capital" in s and "India" in s:
-        print("Answer:",s)
+query_words = query.lower().split()
+
+best_answer = ""
+best_score = 0
+
+for sentence in knowledge_base:
+
+    words = sentence.lower().split()
+    score = 0
+
+    for word in query_words:
+        if word in words:
+            score += 1
+
+    if score > best_score:
+        best_score = score
+        best_answer = sentence
+
+print("Answer:", best_answer)
