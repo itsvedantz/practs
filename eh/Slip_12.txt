@@ -1,25 +1,59 @@
+A. Apply PageRank Algorithm and Analyze Results
+pages = ["A","B","C","D","E"]
 
-Slip 12
+links = {
+"A":["B","C","D"],
+"B":["C","E"],
+"C":["A","D"],
+"D":[],
+"E":[]
+}
 
-Question:
-Refer to the question provided in the practical slip PDF.
+N = len(pages)
+d = 0.85
 
-Answer (Python Implementation Example):
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+pagerank = {}
 
-docs=[
-"sample document one",
-"sample document two",
-"sample document three"
-]
+for page in pages:
+    pagerank[page] = 1/N
 
-vectorizer=TfidfVectorizer()
-tfidf=vectorizer.fit_transform(docs)
+for i in range(10):
 
-query=["sample"]
-q_vec=vectorizer.transform(query)
+    new_rank = {}
 
-similarity=cosine_similarity(q_vec,tfidf)
+    for page in pages:
 
-print(similarity)
+        rank_sum = 0
+
+        for p in pages:
+
+            if page in links[p] and len(links[p]) > 0:
+                rank_sum += pagerank[p] / len(links[p])
+
+        new_rank[page] = (1-d)/N + d * rank_sum
+
+    pagerank = new_rank
+
+print("PageRank Values")
+
+for page in pagerank:
+    print(page,"=",pagerank[page])
+
+B. Program to Calculate Precision, Recall and F-Measure
+tp = 20
+fp = 10
+fn = 30
+
+precision = tp / (tp + fp)
+
+recall = tp / (tp + fn)
+
+f_score = 2 * (precision * recall) / (precision + recall)
+
+print("True Positive =", tp)
+print("False Positive =", fp)
+print("False Negative =", fn)
+
+print("Precision =", precision)
+print("Recall =", recall)
+print("F-Measure =", f_score)
