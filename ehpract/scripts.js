@@ -3,6 +3,7 @@ const cyberGrid = document.querySelector('.cyber-grid');
 // Assuming you have an array of PDF file paths
 const pdfFiles = [
     { name: 'Keylogger', path: 'keylogger.txt' },
+    { name: 'EH PRACT', path: 'EHp.pdf' }
 
     // Add more file paths as needed
 ];
