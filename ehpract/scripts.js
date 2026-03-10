@@ -4,6 +4,9 @@ const cyberGrid = document.querySelector('.cyber-grid');
 const pdfFiles = [
     { name: 'ins psd', path: 'inspr.pdf' },
     { name: 'ins code', path: 'ins.txt' },
+    { name: 'pract6', path: 'pract6.pkt' },
+    { name: 'pract7', path: 'pract7.pkt' },
+    { name: 'pract8', path: 'pract8.pkt' },
 
     // Add more file paths as needed
 ];
