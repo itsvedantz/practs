@@ -1,0 +1,190 @@
+practical 1 
+
+def encrypt(text,s):
+    result = " "
+
+    for i in range(len(text)):
+        char = text[i]
+
+        if (char.isupper()):
+            result += chr((ord(char)+ s - 65) % 26 + 65)
+        else:
+              result += chr((ord(char)+ s - 97) % 26 + 97)
+
+    return result
+
+text = input("Text to encrypt:")
+s = 3
+print("Text:" + text)
+str(s)
+print(" Cipher :" + encrypt(text,s))
+
+practical 1b
+
+s=input("Enter the string: ")
+k=int(input("Enter the key: "))
+enc=[[" " for i in range(len(s))] for j in range(k)]
+row = 0
+flag = 0
+for i in range(len(s)):
+    enc[row][i]=s[i]
+    if row==0:
+        flag=0
+    elif row==k-1:
+        flag=1
+    if flag==0:
+        row+=1
+    else:
+        row-=1
+for i in range(k):
+    print("".join(enc[i]))
+ct=[]
+for i in range(k):
+    for j in range(len(s)):
+        if enc[i][j]!=' ':
+            ct.append(enc[i][j])
+cipher="".join(ct)
+print("Cipher Text: ",cipher)
+
+=========================================================
+
+PRACTICAL 2 E,D
+
+import rsa 
+ 
+public_key, private_key = rsa.newkeys(1024) 
+print(public_key) 
+print('\n',private_key) 
+ 
+with open ("public.pem", "wb") as f: 
+    f.write(public_key.save_pkcs1("PEM")) 
+ 
+with open ("private.pem", "wb") as f: 
+    f.write(private_key.save_pkcs1("PEM")) 
+ 
+with open ("public.pem", "rb") as f: 
+    public_key = rsa.PublicKey.load_pkcs1(f.read()) 
+ 
+with open ("private.pem", "rb") as f: 
+    private_key = rsa.PrivateKey.load_pkcs1(f.read()) 
+ 
+message = input("\nEnter the secrete message you want to share = ") 
+ 
+print('Select operation') 
+print('1: Confidentiality - Encryption ') 
+print('2: Confidentiality - Decryption ') 
+print('3: Exit') 
+ 
+while True: 
+ ch=int(input('Enter choice for operation = ')) 
+ if ch==1: 
+     encrypted_message = rsa.encrypt(message.encode(), 
+public_key) 
+     print("Encrypted message is = ", encrypted_message) 
+ 
+ elif ch==2: 
+     encrypted_message = rsa.encrypt(message.encode(), 
+public_key)  
+     decrypted_message = rsa.decrypt(encrypted_message, 
+private_key) 
+     print("Decrypted message is = ", 
+decrypted_message.decode()) 
+ else: 
+     break 
+            
+=========================================================
+
+practical 3
+
+
+import hmac 
+import hashlib 
+ 
+def generate_mac(message, key):
+    """Generates a message authentication code (MAC) using HMAC-SHA256."""
+    
+    
+    if isinstance(message, str):
+        message = message.encode('utf-8')
+     
+ 
+    if isinstance(key, str):
+        key = key.encode('utf-8')
+        h = hmac.new(key, message, hashlib.sha256)
+        return h.hexdigest()
+    
+def verify_mac(message, key, mac):
+    """Verifies a message authentication code (MAC)."""
+    generated_mac = generate_mac(message, key) 
+    return generated_mac == mac  
+ 
+message =input(" Enter the message whose HMAC is to be generated ")
+key = input(" Enter random secret key to create HMAC ") 
+ 
+mac = generate_mac(message, key) 
+print(" Generated MAC:", mac) 
+ 
+option=input("Do you want to verify it (y/n) ") 
+if option=='y': 
+    is_valid = verify_mac(message, key, mac) 
+    print("MAC is valid:", is_valid) 
+
+=========================================================
+
+PRACTICAL 4  Digital Signature
+
+
+import rsa
+
+public_key,private_key = rsa.newkeys(1024)
+print(public_key)
+print('\n',private_key)
+
+with open("public.pem","wb") as f:
+    f.write(public_key.save_pkcs1("PEM"))
+
+with open("private.pem","wb") as f:
+    f.write(private_key.save_pkcs1("PEM"))
+
+with open("public.pem","rb") as f:
+    public_key = rsa.PublicKey.load_pkcs1(f.read())
+
+with open("private.pem","rb") as f:
+    private_key = rsa.PrivateKey.load_pkcs1(f.read())
+
+message = input("\n Enter the secrete message you want to share: ")
+
+digi_sign = rsa.sign(message.encode(),private_key, "SHA-256")
+print("Digital Signature is :",digi_sign)
+option = input("Do you want to verify it (y/n)? ")
+if option == 'y':
+    print(rsa.verify(message.encode(),digi_sign,public_key))
+
+=========================================================
+
+practical 5
+
+from random import randint
+if __name__ == "__main__":
+
+    p=int(input("Enter the value of prime number P is:"))
+    g=int(input("Enter the value of Generator G is:"))
+    print("Agreed Prime number p is : %d " %(p))
+    print("And agreed Generator G is: %d" %(g))
+
+    a = int(input("The secret key for Alice is:"))
+    print("The secret number of Alice is : %d"%(a))
+
+    PUa = int(pow(g,a,p))
+
+    b = int(input("The secret key for Bob is:"))
+    print("The secret number of Bob is : %d"%(b))
+
+    PUb = int(pow(g,b,p))
+
+    ka = int(pow(PUb,a,p))
+    kb = int(pow(PUa,b,p))
+
+    print("The secret key of ALice is: %d"%(ka))
+    print("The secret key of ALice is: %d"%(kb))
+
