@@ -7,6 +7,9 @@ const pdfFiles = [
     { name: 'pract6', path: 'pract6.pkt' },
     { name: 'pract7', path: 'pract7.pkt' },
     { name: 'pract8', path: 'pract8.pkt' },
+    { name: 'pr6', path: 'pr6.png' },
+    { name: 'pr7', path: 'pr7.png' },
+    { name: 'pr8', path: 'pr8.png' },
 
     // Add more file paths as needed
 ];
