@@ -2,23 +2,22 @@ const cyberGrid = document.querySelector('.cyber-grid');
 
 // Assuming you have an array of PDF file paths
 const pdfFiles = [
-  { name: 'P1 Execute following networking commands....SystemInfo', path: 'P1 Execute following networking commands....SystemInfo.pkt' },
-  { name: 'P2 Create a basic network of two computers', path: 'P2 Create a basic network of two computers.pkt' },
-  { name: 'P3 Create a basic network of one server & two computers', path: 'P3 Create a basic network of one server & two computers.pkt' },
-  { name: 'P4 Create a basic network of one server & two computers & two mobile devices', path: 'P4 Create a basic network of one server & two computers & two mobile devices.pkt' },
-  { name: 'P5 Create a network with three routes with RIPv1', path: 'P5 Create a network with three routes with RIPv1.pkt' },
-  { name: 'P6 Create a network with three routers with RIPv2', path: 'P6 Create a network with three routers with RIPv2.pkt' },
-  { name: 'P7 Create a network with three routers with OSPF', path: 'P7 Create a network with three routers with OSPF.pkt' },
-  { name: 'P8 Create a network with three routers with BGP', path: 'P8 Create a network with three routers with BGP.pkt' },
-  { name: 'P9 Create a wireless network of multiple PCs', path: 'P9 Create a wireless network of multiple PCs.pkt' },
-  { name: 'Create a basic network of two computers', path: 'P2 Create a basic network of two computers.txt' },
-  { name: 'Create a basic network of one server & two computers', path: 'P3 Create a basic network of one server & two computers.txt' },
-  { name: 'Create a basic network of one server & two computers & two mobile devices', path: 'P4 Create a basic network of one server & two computers & two mobile devices.txt' },
-  { name: 'Create a network with three routes with RIPv1', path: 'P5 Create a network with three routes with RIPv1.txt' },
-  { name: 'Create a network with three routers with RIPv2', path: 'P6 Create a network with three routers with RIPv2.txt' },
-  { name: 'Create a network with three routers with OSPF', path: 'P7 Create a network with three routers with OSPF.txt' },
-  { name: 'Create a network with three routers with BGP', path: 'P8 Create a network with three routers with BGP.txt' },
-  { name: 'Create a wireless network of multiple PCs', path: 'P9 Create a wireless network of multiple PCs.txt' }
+
+  { name: '1 column wise operation', path: '1 column wise operation.txt' },
+  { name: '2random dataset of 1000 values', path: '2random dataset of 1000 values.txt' },
+  { name: '4 1 D array of 100 datasets', path: '4 1 D array of 100 datasets.txt' },
+  { name: '5 inner join outer join', path: '5 inner join outer join.txt' },
+  { name: 'comparing the average value of a numerical column', path: 'comparing the average value of a numerical column.txt' },
+  { name: 'create a pivot table summarizing the data', path: 'create a pivot table summarizing the data.txt' },
+  { name: 'create a seaborn scatter plot between two numerical columns', path: 'create a seaborn scatter plot between two numerical columns.txt' },
+  { name: 'create a seaborn violin plot to show the distribution of values for each column', path: 'create a seaborn violin plot to show the distribution of values for each column.txt' },
+  { name: 'import numpy as np', path: 'import numpy as np.txt' },
+  { name: 'index', path: 'index.html' },
+  { name: 'plot a boxplot for a numerical column grouped by a categorical column', path: 'plot a boxplot for a numerical column grouped by a categorical column.txt' },
+  { name: 'plot a histogram showing the distribution of a numerical column', path: 'plot a histogram showing the distribution of a numerical column.txt' },
+  { name: 'script', path: 'script.js' },
+  { name: 'style', path: 'style.css' },
+  { name: 'visualize the frequency distribution of values in a categorical column', path: 'visualize the frequency distribution of values in a categorical column.txt' }
 
     // Add more file paths as needed
 ];
