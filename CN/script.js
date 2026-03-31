@@ -3,8 +3,8 @@ const cyberGrid = document.querySelector('.cyber-grid');
 const files = [
 
     {
-        name: "MTOM",
-        type: "P1 Execute following networking commands....SystemInfo",
+        name: "P1 Execute following networking commands....SystemInfo",
+        type: "file",
         path: "P1 Execute following networking commands....SystemInfo.pkt",
     },
 
