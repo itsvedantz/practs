@@ -1,128 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Practical Codes 🧑‍💻</title>
-
-<style>
-
-body{
-    background:#0f172a;
-    font-family:Arial;
-    color:white;
-    text-align:center;
-    padding:40px;
-}
-
-.container{
-    background:#1e293b;
-    padding:30px;
-    border-radius:15px;
-    max-width:500px;
-    margin:auto;
-    box-shadow:0 0 20px rgba(0,0,0,0.6);
-}
-
-h1{
-    color:#38bdf8;
-}
-
-.qr{
-    width:220px;
-    margin:20px;
-}
-
-button{
-    padding:12px 20px;
-    margin:10px;
-    border:none;
-    border-radius:8px;
-    font-size:16px;
-    cursor:pointer;
-}
-
-.pay{
-    background:#22c55e;
-    color:white;
-}
-
-.gareeb{
-    background:#ef4444;
-    color:white;
-}
-
-#content{
-    display:none;
-    margin-top:20px;
-}
-
-#meme{
-    display:none;
-    margin-top:20px;
-}
-
-img{
-    max-width:100%;
-    border-radius:10px;
-}
-
-</style>
+    <title>Cyber PDF File Display</title>
+    <link rel="stylesheet" href="style.css"> <!-- Add a reference to the CSS file -->
 </head>
-
 <body>
-
-<div class="container">
-
-<h1>Practical Codes 🧑‍💻</h1>
-
-<p>
-This website contains <b>TOP SECRET EXAM MATERIAL</b> 🤫  
-Access Fee: <b>₹100</b>
-</p>
-
-<p>
-Scan QR and pay ₹100 to unlock knowledge 🧠✨
-</p>
-
-<img src="qrcode.jpeg" class="qr">
-
-<br>
-
-<button class="gareeb" onclick="gareeb()">Gareeb hu bhai</button>
-
-<div id="content">
-
-<h2>Welcome Rich Student 💰</h2>
-
-<p>Congratulations! You unlocked the study material.</p>
-
-<a href="study.html">Open Study Material</a>
-
-</div>
-
-<div id="meme">
-
-<h2>Bhai padhai free nahi hoti 😭</h2>
-
-<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDZqc2Vzd2RnZmRqZHgzZno1NDRmNG81a3dyNTh3OHN0dGxwNjN3dSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wy2ApzQIzV1S6dijAN/giphy.gif">
-
-<p>₹100 bhej aur wapas aa 😤</p>
-
-</div>
-
-</div>
-
-<script>
-
-function unlock(){
-    document.getElementById("content").style.display="block";
-}
-
-function gareeb(){
-    document.getElementById("meme").style.display="block";
-}
-
-</script>
-
+    <div class="cyber-container">
+        <h1 class="cyber-title">CODE WEBSITE</h1>
+        <div class="cyber-grid">
+            <!-- We'll dynamically add PDF file paths here -->
+        </div>
+    </div>
+    <script src="script.js"></script> <!-- Add a reference to the JavaScript file -->
 </body>
 </html>
