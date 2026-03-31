@@ -2,7 +2,7 @@ const cyberGrid = document.querySelector('.cyber-grid');
 
 // Assuming you have an array of PDF file paths
 const pdfFiles = [
-    { name: 'ins psd', path: 'inspr.pdf' },
+    { name: 'P1 Execute following networking commands....SystemInfo', path: 'P1 Execute following networking commands....SystemInfo.pkt' },
     { name: 'ins code', path: 'ins.txt' },
     { name: 'pract6', path: 'pract6.pkt' },
     { name: 'pract7', path: 'pract7.pkt' },
