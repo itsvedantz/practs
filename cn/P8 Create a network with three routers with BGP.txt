@@ -1,0 +1,96 @@
+Configuring PC0:
+IP Address = 192.168.1.2
+Subnet Mask = 255.255.255.0
+Default Gateway = 192.168.1.1
+
+Configuring PC1:
+IP Address = 192.168.1.3
+Subnet Mask = 255.255.255.0
+Default Gateway = 192.168.1.1
+
+Configuring PC2:
+IP Address = 192.168.2.2
+Subnet Mask = 255.255.255.0
+Default Gateway = 192.168.2.1
+
+Configuring PC3:
+IP Address = 192.168.2.3
+Subnet Mask = 255.255.255.0
+Default Gateway = 192.168.2.1
+
+Configuring PC4:
+IP Address = 192.168.3.1
+Subnet Mask = 255.255.255.0
+Default Gateway = 192.168.3.2
+
+Configuring PC5:
+IP Address = 192.168.3.2
+Subnet Mask = 255.255.255.0
+Default Gateway = 192.168.3.1
+
+Configuring Router0
+Fast Ethernet 0/0
+IP Address = 192.168.1.1
+Subnet Mask = 255.255.255.0
+Turn on the port status
+
+Serial 2/0
+IP Address = 10.0.0.2
+Subnet Mask = 255.0.0.0
+Set clock rate at 64000
+Turn on the port status
+
+Configuring Router1
+Fast Ethernet 0/0
+IP Address = 192.168.2.1
+Subnet Mask = 255.255.255.0
+Turn on the port status
+
+Serial 2/0
+IP Address = 10.0.0.3
+Subnet Mask = 255.0.0.0
+Turn on the port status
+
+Serial 3/0
+IP Address = 20.0.0.2
+Subnet Mask = 255.0.0.0
+Set clock rate at 64000
+Turn on the port status
+
+Configuring Router2
+Fast Ethernet 0/0
+IP Address = 192.168.3.1
+Subnet Mask = 255.255.255.0
+Turn on the port status
+
+Serial 2/0
+IP Address = 20.0.0.3
+Subnet Mask = 255.0.0.0
+Clock rate: Not set
+Turn on the port status
+Configuring Router0 for BGP (CLI Mode)
+
+Router> en
+Router# conf t
+Router(config)# router bgp 1000
+Router(config-router)# network 10.0.0.0
+Router(config-router)# network 192.168.1.0
+Router(config-router)# neighbor 10.0.0.3 remote-as 2000
+Configuring Router1 for BGP (CLI Mode)
+
+Router> en
+Router# conf t
+Router(config)# router bgp 2000
+Router(config-router)# network 10.0.0.0
+Router(config-router)# network 20.0.0.0
+Router(config-router)# network 192.168.2.0
+Router(config-router)# neighbor 10.0.0.2 remote-as 1000
+Router(config-router)# neighbor 20.0.0.3 remote-as 3000
+Configuring Router2 for BGP (CLI Mode)
+
+Router> en
+Router# conf t
+Router(config)# router bgp 3000
+Router(config-router)# network 20.0.0.0
+Router(config-router)# network 192.168.3.0
+Router(config-router)# neighbor 20.0.0.2 remote-as 2000

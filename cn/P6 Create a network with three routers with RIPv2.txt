@@ -1,0 +1,113 @@
+Configuring PC0:
+Step 1: By clicking on PC0, select Desktop
+Step 2: Select IP Config
+Step 3: Fill required information:
+IP Address: 192.168.1.2
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.1.1
+
+Configuring PC1:
+Step 1: By clicking on PC1, select Desktop
+Step 2: Select IP Config
+Step 3: Fill required information:
+IP Address: 192.168.1.3
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.1.1
+
+Configuring PC2:
+Step 1: By clicking on PC2, select Desktop
+Step 2: Select IP Config
+Step 3: Fill required information:
+IP Address: 192.168.2.2
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.2.1
+
+Configuring PC3:
+Step 1: By clicking on PC3, select Desktop
+Step 2: Select IP Config
+Step 3: Fill required information:
+IP Address: 192.168.2.3
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.2.1
+
+Configuring PC4:
+Step 1: By clicking on PC4, select Desktop
+Step 2: Select IP Config
+Step 3: Fill required information:
+IP Address: 192.168.3.2
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.3.1
+
+Configuring PC5:
+Step 1: By clicking on PC5, select Desktop
+Step 2: Select IP Config
+Step 3: Fill required information:
+IP Address: 192.168.3.3
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.3.1
+
+Configuring Router 0:
+Step 1: By clicking on Router0, select Config
+Step 2: Select Serial 2/0
+Step 3: Fill required information:
+IP Address: 10.0.0.2
+Subnet Mask: 255.0.0.0
+Step 4: Set clock rate to 64000 & click on
+Step 5: Select FastEthernet 0/0
+IP Address: 192.168.1.1
+Subnet Mask: 255.255.255.0
+Configuring Router 0 for RIPv2 (using CLI Mode):
+
+Router> enable
+Router# conf t
+Router(config)# router rip
+Router(config-router)# version 2
+Router(config-router)# network 10.0.0.0
+Router(config-router)# network 192.168.1.0
+Router(config-router)# exit
+
+Configuring Router 1:
+Step 1: By clicking on Router1, select Config
+Step 2: Select Serial 2/0
+Step 3: Fill required information:
+IP Address: 10.0.0.3
+Subnet Mask: 255.0.0.0
+Step 4: Set clock rate on not set & click on
+Step 5: Select Serial 3/0
+Step 6: Fill required information:
+IP Address: 20.0.0.2
+Subnet Mask: 255.0.0.0
+Step 7: Set clock rate to 64000 & click on
+Step 8: Select FastEthernet 0/0
+IP Address: 192.168.2.1
+Subnet Mask: 255.255.255.0
+Configuring Router 1 for RIPv2 (using CLI Mode):
+
+Router> enable
+Router# conf t
+Router(config)# router rip
+Router(config-router)# version 2
+Router(config-router)# network 10.0.0.0
+Router(config-router)# network 20.0.0.0
+Router(config-router)# network 192.168.2.0
+Router(config-router)# exit
+
+Configuring Router 2:
+Step 1: By clicking on Router2, select Config
+Step 2: Select IP Config
+Step 3: Fill required information:
+IP Address: 20.0.0.3
+Subnet Mask: 255.0.0.0
+Step 4: Set clock rate on not set & click on
+Step 5: Select FastEthernet 0/0
+IP Address: 192.168.3.1
+Subnet Mask: 255.255.255.0
+Configuring Router 2 for RIPv2 (using CLI Mode):
+
+Router> enable
+Router# conf t
+Router(config)# router rip
+Router(config-router)# version 2
+Router(config-router)# network 20.0.0.0
+Router(config-router)# network 192.168.3.0
+Router(config-router)# exit

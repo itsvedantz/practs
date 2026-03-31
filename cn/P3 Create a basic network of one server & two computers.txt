@@ -1,0 +1,33 @@
+Configuring the Server:
+For Server 0:
+Step 1: By clicking on Server0, select Desktop
+Step 2: Select IP Configuration
+Step 3: Fill required information:
+IPv4 Address: 10.0.0.2
+Subnet Mask: 255.0.0.0
+Default Gateway: 10.0.0.1
+DNS Server: 10.0.0.2
+
+Enabling and Setting the DHCP Service on the Server
+For Server 0:
+Step 1: By clicking on Server0, select Services
+Step 2: Select DHCP Services
+Step 3: Fill required information:
+Pool Name: ServerPool
+Default Gateway: 10.0.0.1
+DNS Server: 10.0.0.2
+Start IP Address: 10.0.0.3
+Subnet Mask: 255.0.0.0
+Maximum Number of Users: 512
+Step 4: Click on and save the service
+Verifying the Dynamic Addressing on Both the PCs
+
+For PC0:
+Step 1: By clicking on PC0, select Desktop
+Step 2: Select IP Configuration
+Step 3: Click on DHCP, all information will be saved automatically
+
+For PC1:
+Step 1: By clicking on PC1, select Desktop
+Step 2: Select IP Configuration
+Step 3: Click on DHCP, all information will be saved automatically

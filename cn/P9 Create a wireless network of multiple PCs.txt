@@ -1,0 +1,24 @@
+Add a wireless interface to each PC as follows:
+1.Click on the PC and open it.
+2.Go to the Physical tab.
+3.Switch OFF the power of the PC.
+4.From the modules list, select PT-HOST-NM-1W.
+5.Drag and insert the module into the empty slot of the PC.
+6.Switch ON the power again.
+
+Adding IP Address to each PC
+1) PC0:
+IPv4 Address: 10.0.0.1
+Subnet Mask: 255.0.0.0
+2) PC1:
+IPv4 Address: 10.0.0.2
+Subnet Mask: 255.0.0.0
+3) PC2:
+IPv4 Address: 10.0.0.3
+Subnet Mask: 255.0.0.0
+4) PC3:
+IPv4 Address: 10.0.0.4
+Subnet Mask: 255.0.0.0
+5) PC4:
+IPv4 Address: 10.0.0.5
+Subnet Mask: 255.0.0.0

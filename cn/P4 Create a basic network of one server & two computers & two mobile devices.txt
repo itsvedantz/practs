@@ -1,0 +1,34 @@
+Configuring the Server:
+For Server 0:
+Step 1: By clicking on Server0, select Desktop
+Step 2: Select IP Config
+Step 3: Fill required information:
+IPv4 Address: 192.168.1.2
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.1.1
+DNS Server: 0.0.0.0
+
+Configure PC0:
+Step 1: By clicking on PC0, select Desktop
+Step 2: Select IP Configuration
+Step 3: Fill required information:
+IPv4 Address: 192.168.1.3
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.1.1
+DNS Server: 0.0.0.0
+
+Configure PC1:
+Step 1: By clicking on PC1, select Desktop
+Step 2: Select IP Configuration
+Step 3: Fill required information:
+IPv4 Address: 192.168.1.4
+Subnet Mask: 255.255.255.0
+
+Configure Laptop 0:
+Step 1: By clicking on Laptop0, select Desktop
+Step 2: Select IP Config
+Step 3: Fill required information:
+IPv4 Address: 192.168.1.6
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.1.1
+DNS Server: 0.0.0.0

@@ -1,0 +1,14 @@
+For PC0:
+Step 1: By clicking on PC0, select Desktop.
+Step 2: Select IP Configuration.
+Step 3: Fill required information.
+IPv4 Address: 192.168.1.2
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.1.1
+For PC1:
+Step 1: By clicking on PC1, select Desktop.
+Step 2: Select IP Configuration.
+Step 3: Fill required information.
+IPv4 Address: 192.168.1.3
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.1.1
