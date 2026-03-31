@@ -2,7 +2,6 @@ const cyberGrid = document.querySelector('.cyber-grid');
 
 const files = [
 
-[
   {
     name: "P1 Execute following networking commands....SystemInfo",
     type: "file",
