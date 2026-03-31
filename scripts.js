@@ -3,7 +3,7 @@ const cyberGrid = document.querySelector('.cyber-grid');
 // Assuming you have an array of PDF file paths
 const pdfFiles = [
     { name: 'CN', path: 'cn' },
-    { name: 'inverted index 2doc, calculate precision', path: 'Slip_2.txt' },
+    { name: 'APDS', path: 'apds' },
 
     // Add more file paths as needed
 ];
