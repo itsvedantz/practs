@@ -1,0 +1,20 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+
+data = {
+    'sales': np.random.randint(100, 10000, 1000),
+    'Region': np.random.choice(['North', 'South', 'East'], 1000)
+}
+
+df = pd.DataFrame(data)
+
+plt.figure(figsize=(10, 6))
+sns.histplot(data=df, x='sales', bins=30, color='skyblue', edgecolor='black')
+
+plt.title('Sales Distribution Histogram', fontsize=16, fontweight='bold')
+plt.xlabel('Sales Amount', fontsize=12)
+plt.ylabel('Frequency', fontsize=12)
+
+plt.show()

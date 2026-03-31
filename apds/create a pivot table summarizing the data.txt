@@ -1,0 +1,21 @@
+ import pandas as pd
+
+data = {
+    'Region': ['North', 'South', 'North', 'East', 'South', 'East', 'North', 'South'],
+    'product': ['Laptop', 'Mouse', 'phone', 'laptop', 'phone', 'Mouse', 'laptop', 'phone'],
+    'sales': [1000, 50, 800, 1200, 900, 60, 1100, 850]
+}
+
+df = pd.DataFrame(data)
+
+print("original sales Data:")
+print(df)
+
+pivot_table = pd.pivot_table(df,
+                             values='sales',
+                             index='Region',
+                             columns='product',
+                             aggfunc='sum')
+
+print("\nPivot table (product wise sales by Region):")
+print(pivot_table)

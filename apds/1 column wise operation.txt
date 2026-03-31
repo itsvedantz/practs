@@ -1,0 +1,32 @@
+import pandas as pd
+
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie', 'David'],
+    'Age': [25, 30, 35, 40],
+    'Salary': [50000, 60000, 75000, 90000],
+    'Experience_Years': [2, 5, 10, 15]
+}
+
+df = pd.DataFrame(data)
+
+print("Original DataFrame:")
+print(df)
+print("\n")
+
+
+df['Bonus'] = df['Salary'] * 0.10
+
+print("DataFrame after adding 'Bonus' column:")
+print(df)
+print("\n")
+
+df.rename(columns={'Experience_Years': 'Years_of_Experience'}, inplace=True)
+
+print("DataFrame after renaming column:")
+print(df)
+print("\n")
+
+df['Age'] = df['Age'].astype(float)
+
+print("DataFrame after changing 'Age' column to float:")
+print(df.dtypes)

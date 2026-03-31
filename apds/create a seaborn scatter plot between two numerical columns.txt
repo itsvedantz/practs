@@ -1,0 +1,20 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset('iris')
+
+plt.figure(figsize=(10, 8))
+
+sns.scatterplot(data=df,
+                x='petal_length',
+                y='petal_width',
+                hue='species',
+                style='species',
+                s=100,
+                palette='husl')
+
+plt.title('Petal Length vs Petal Width by Species', fontsize=16)
+plt.xlabel('Petal Length (cm)', fontsize=12)
+plt.ylabel('Petal Width (cm)', fontsize=12)
+
+plt.show()

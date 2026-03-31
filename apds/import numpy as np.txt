@@ -1,0 +1,29 @@
+import numpy as np
+
+A = np.random.randint(1, 11, (3, 3))
+B = np.random.randint(1, 11, (3, 3))
+
+print("Matrix A:\n", A)
+print("Matrix B:\n", B)
+
+add_result = A + B
+print("\nMatrix Addition (A + B):\n", add_result)
+
+sub_result = A - B
+print("\nMatrix Subtraction (A - B):\n", sub_result)
+
+mul_result = np.dot(A, B)
+print("\nMatrix Multiplication (A x B):\n", mul_result)
+
+div_result = A / B
+print("\nElement-wise Division (A / B):\n", div_result)
+
+det_A = np.linalg.det(A)
+print("\nDeterminant of A:", det_A)
+
+try:
+    inv_A = np.linalg.inv(A)
+    print("\nInverse of A:\n", inv_A)
+except np.linalg.LinAlgError:
+    print("\nMatrix A is not invertible")
+

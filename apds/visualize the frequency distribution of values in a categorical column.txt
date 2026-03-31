@@ -1,0 +1,25 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset('tips')
+
+plt.figure(figsize=(8, 6))
+
+ax = sns.countplot(
+    data=df,
+    y='day',
+    hue='day',
+    palette='viridis',
+    legend=False,
+    order=df['day'].value_counts().index
+)
+
+for container in ax.containers:
+    ax.bar_label(container, fmt='%d')
+
+plt.title('Number of Customers by Day (Restaurant)', fontsize=16, fontweight='bold')
+plt.ylabel('Day of week', fontsize=12)
+plt.xlabel('Customer Count', fontsize=12)
+
+plt.tight_layout()
+plt.show()

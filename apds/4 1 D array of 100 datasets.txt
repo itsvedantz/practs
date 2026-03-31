@@ -1,0 +1,13 @@
+import numpy as np
+
+arr = np.random.randint(1, 1001, size=100)
+print("Original Array:")
+print(arr)
+
+filtered = arr[(arr > 500) & (arr < 800)]
+print("Filtered Values (500 < value < 800):")
+print(filtered)
+
+mean_filtered = filtered.mean()
+print("Mean of Filtered Values:")
+print(mean_filtered)

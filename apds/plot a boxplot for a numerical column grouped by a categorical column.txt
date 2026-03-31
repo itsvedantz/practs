@@ -1,0 +1,21 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+
+data = {
+    'Department': np.random.choice(['HR', 'IT', 'Finance', 'Marketing'], 200),
+    'Salary': np.random.normal(50000, 15000, 200)
+}
+
+df = pd.DataFrame(data)
+
+plt.figure(figsize=(10, 6))
+sns.boxplot(data=df, x='Department', y='Salary', hue='Department', palette='Set2')
+
+plt.title('Salary Distribution by Department', fontsize=16, fontweight='bold')
+plt.ylabel('Salary ($)', fontsize=12)
+plt.xlabel('Department', fontsize=12)
+
+plt.tight_layout()
+plt.show()

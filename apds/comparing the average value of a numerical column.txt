@@ -1,0 +1,13 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset('tips')
+
+plt.figure(figsize=(8, 6))
+sns.barplot(data=df, x='day', y='total_bill', hue='day', palette='viridis', legend=False)
+
+plt.title('Average Total Bill by Day of Week', fontsize=16)
+plt.xlabel('Day of the week', fontsize=12)
+plt.ylabel('Average Bill Amount ($)', fontsize=12)
+
+plt.show()

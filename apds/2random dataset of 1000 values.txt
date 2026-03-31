@@ -1,0 +1,17 @@
+import numpy as np
+
+data = np.array([13, 16, 21, 32, 39, 36, 40, 47, 50, 42])
+
+mean_value = np.mean(data)
+median_value = np.median(data)
+variance_value = np.var(data)
+std_dev_value = np.std(data)
+min_value = np.min(data)
+max_value = np.max(data)
+
+print(f"Dataset Mean: {mean_value:.4f}")
+print(f"Dataset Median: {median_value:.4f}")
+print(f"Dataset Variance: {variance_value:.4f}")
+print(f"Dataset Standard Deviation: {std_dev_value:.4f}")
+print(f"Dataset Minimum: {min_value:.4f}")
+print(f"Dataset Maximum: {max_value:.4f}")

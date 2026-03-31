@@ -1,0 +1,31 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
+df = sns.load_dataset('iris')
+
+df_melted = pd.melt(
+    df,
+    id_vars='species',
+    value_vars=['sepal_length', 'sepal_width', 'petal_length', 'petal_width'],
+    var_name='measurement',
+    value_name='value'
+)
+
+plt.figure(figsize=(10, 6))
+
+sns.violinplot(
+    data=df_melted,
+    x='measurement',
+    y='value',
+    hue='species'
+)
+
+plt.title('flower measurement distributed by species', fontsize=16)
+plt.xlabel('measurement types', fontsize=12)
+plt.ylabel('measurement values (cm)', fontsize=12)
+plt.xticks(rotation=45)
+
+plt.tight_layout()
+plt.show()
