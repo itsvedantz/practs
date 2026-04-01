@@ -2,14 +2,17 @@ const cyberGrid = document.querySelector('.cyber-grid');
 
 // Assuming you have an array of PDF file paths
 const pdfFiles = [
-    { name: 'P1 Execute following networking commands....SystemInfo', path: 'P1 Execute following networking commands....SystemInfo.pkt' },
-    { name: 'ins code', path: 'ins.txt' },
-    { name: 'pract6', path: 'pract6.pkt' },
-    { name: 'pract7', path: 'pract7.pkt' },
-    { name: 'pract8', path: 'pract8.pkt' },
-    { name: 'pr6', path: 'pr6.png' },
-    { name: 'pr7', path: 'pr7.png' },
-    { name: 'pr8', path: 'pr8.png' },
+  { name: 'BOOK', path: 'BOOK.CSV' },
+  { name: 'M1P11 Reshaping data', path: 'M1P11 Reshaping data.R' },
+  { name: 'M1P2 Creating datasets from raw data', path: 'M1P2 Creating datasets from raw data.R' },
+  { name: 'M1P3 Exploring data- Displaying datasets', path: 'M1P3 Exploring data- Displaying datasets.R' },
+  { name: 'M1P5 Sorting data', path: 'M1P5 Sorting data.R' },
+  { name: 'M1P7 Selecting & dropping variables', path: 'M1P7 Selecting & dropping variables.R' },
+  { name: 'M1P9 Performing text manipulation', path: 'M1P9 Performing text manipulation.R' },
+  { name: 'M2P1 generating frequency tables', path: 'M2P1 generating frequency tables.R' },
+  { name: 'M2P3 performing one-sample + -tests', path: 'M2P3 performing one-sample + -tests.R' },
+  { name: 'M2P5 performing paired t tests', path: 'M2P5 performing paired t tests.R' },
+  { name: 'M2P6 performing one-way ANOVA', path: 'M2P6 performing one-way ANOVA.R' }
 
     // Add more file paths as needed
 ];
