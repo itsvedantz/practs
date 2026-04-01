@@ -12,8 +12,8 @@ const pdfFiles = [
   { name: 'M2P1 generating frequency tables', path: 'M2P1 generating frequency tables.txt' },
   { name: 'M2P3 performing one-sample + -tests', path: 'M2P3 performing one-sample + -tests.txt' },
   { name: 'M2P5 performing paired t tests', path: 'M2P5 performing paired t tests.txt' },
-  { name: 'M2P6 performing one-way ANOVA', path: 'M2P6 performing one-way ANOVA.txt' }
-
+  { name: 'M2P6 performing one-way ANOVA', path: 'M2P6 performing one-way ANOVA.txt' },
+  { name: 'BOOK CSV', path: 'BOOKCSV.txt' }
     // Add more file paths as needed
 ];
 
