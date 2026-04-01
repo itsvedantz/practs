@@ -2,7 +2,7 @@ const cyberGrid = document.querySelector('.cyber-grid');
 
 // Assuming you have an array of PDF file paths
 const pdfFiles = [
-  { name: 'BOOK', path: 'BOOK.CSV' },
+
   { name: 'M1P11 Reshaping data', path: 'M1P11 Reshaping data.txt' },
   { name: 'M1P2 Creating datasets from raw data', path: 'M1P2 Creating datasets from raw data.txt' },
   { name: 'M1P3 Exploring data- Displaying datasets', path: 'M1P3 Exploring data- Displaying datasets.txt' },
