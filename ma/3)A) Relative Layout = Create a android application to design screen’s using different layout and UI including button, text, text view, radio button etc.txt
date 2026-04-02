@@ -1,0 +1,58 @@
+1.activity_main.xml:-
+<RelativeLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registration"
+        android:textSize="40dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/txtreg"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Username"
+        android:textSize="30dp"
+        android:layout_below="@+id/txtreg"
+        android:id="@+id/uname"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Password"
+        android:textSize="30dp"
+        android:layout_below="@+id/uname"
+        android:id="@+id/upass"/>
+
+   <RadioGroup
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/upass"
+       android:id="@+id/rbgp">
+
+       <RadioButton
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Male"
+           android:textSize="30dp"
+           android:id="@+id/rbmale"/>
+
+       <RadioButton
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Female"
+           android:textSize="30dp"
+           android:id="@+id/rbfemale"/>
+
+   </RadioGroup>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:textSize="30dp"
+        android:layout_below="@+id/rbgp"/>
+
+</RelativeLayout>
