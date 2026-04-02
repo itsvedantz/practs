@@ -5,10 +5,10 @@ const pdfFiles = [
   
   { name: '5) Write a android program that demonstrate option menu', path: '5) Write a android program that demonstrate option menu.txt' },
   { name: '4) Write an Android program to demonstrate activity life cycle, activity methods', path: '4) Write an Android program to demonstrate activity life cycle, activity methods.txt' },
-  { name: "3)C) Table layout-  Create a android application to design screen's using different layout and UI including button, text, text view, radio button etc", path: "3)C) Table layout-  Create a android application to design screen's using different layout and UI including button, text, text view, radio button etc.txt" },
-  { name: "3)B) Linear Layout(vertical)=  Create a android application to design screen's using different layout and UI including button, text, text view, radio button etc", path: "3)B) Linear Layout(vertical)=  Create a android application to design screen's using different layout and UI including button, text, text view, radio button etc.txt" },
+  { name: "3)C) Table layout-  Create a android application to design screen's using different layout and UI including button, text, text view, radio button etc", path: "3)C)Createaandroidapplicationto designscreensusingdifferentlayoutandUI including button, text.txt" },
+  { name: "3)B) Linear Layout(vertical)=  Create a android application to design screen's using different layout and UI including button, text, text view, radio button etc", path: "3)B)Create a android application to design screen’s using different layout and UI including button, text.txt" },
   { name: "3)A) Relative Layout = Create a android application to design screen's using different layout and UI including button, text, text view, radio button etc", path: "3)A)Creat a andro app to design screen using diff layout and UI inc button, text, text view etc.txt" },
-  { name: '2) Create an android project using Android Studios for programming resources, Android resources like color, strength, theme, drawable, dimensions, image', path: '2) Create an android project using Android Studios for programming resources, Android resources like color, strength, theme, drawable, dimensions, image.txt' },
+  { name: '2) Create an android project using Android Studios for programming resources, Android resources like color, strength, theme, drawable, dimensions, image', path: '2) Create an android project using Android Studios for programming resources, Android resources like color.txt' },
   { name: '1) Create a android project using Android Studios to write simple hello world program', path: '1) Create a android project using Android Studios to write simple hello world program.txt' }
     // Add more file paths as needed
 ];
