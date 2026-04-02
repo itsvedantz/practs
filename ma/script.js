@@ -10,7 +10,6 @@ const pdfFiles = [
   { name: "3)A) Relative Layout = Create a android application to design screen's using different layout and UI including button, text, text view, radio button etc", path: "3)A) Relative Layout = Create a android application to design screen's using different layout and UI including button, text, text view, radio button etc.txt" },
   { name: '2) Create an android project using Android Studios for programming resources, Android resources like color, strength, theme, drawable, dimensions, image', path: '2) Create an android project using Android Studios for programming resources, Android resources like color, strength, theme, drawable, dimensions, image.txt' },
   { name: '1) Create a android project using Android Studios to write simple hello world program', path: '1) Create a android project using Android Studios to write simple hello world program.txt' }
-  { name: 'BOOK CSV', path: 'BOOK.CSV' }
     // Add more file paths as needed
 ];
 
