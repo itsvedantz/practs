@@ -1,0 +1,49 @@
+1.activity_main.xml:-
+<RelativeLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mytext"
+        android:textColor="@color/abc"
+        android:textSize="40dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/txt"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/txt"
+        android:src="@drawable/masha" />
+
+</RelativeLayout>
+
+
+2. Colors.xml:-
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="abc">#E91E63</color>
+</resources>
+
+3. Strings.xml:-
+<resources>
+    <string name="app_name">Mapract2</string>
+    <string name="mytext">This is Masha</string>
+</resources>
+
+4. Themes.xml:-
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.Mapract2" parent="Theme.AppCompat.DayNight.DarkActionBar">
+</style>
+
+ <style name="Theme.Mapract2" parent="Base.Theme.Mapract2" />
+</resources>
+
+
+
+

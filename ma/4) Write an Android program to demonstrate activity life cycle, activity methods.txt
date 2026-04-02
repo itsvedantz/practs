@@ -1,0 +1,64 @@
+1. activity_main.xml:-
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World"
+        android:textSize="30dp"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>
+
+2. ActivityMain.kt:-
+package com.example.mapract3c
+
+import android.os.Bundle
+import android.util.Log
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+
+class MainActivity : AppCompatActivity() {
+    val tag="LifeCycle";
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
+        Log.d(tag,"InCreate event")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(tag,"onStart event")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(tag,"onPause Event")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(tag,"onStop Event")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(tag,"onResume Event")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(tag,"onDestroy Event")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(tag,"onRestart Event")
+    }
+
+}
