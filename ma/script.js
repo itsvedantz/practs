@@ -3,16 +3,13 @@ const cyberGrid = document.querySelector('.cyber-grid');
 // Assuming you have an array of PDF file paths
 const pdfFiles = [
   
-  { name: 'M1P11 Reshaping data', path: 'M1P11 Reshaping data.txt' },
-  { name: 'M1P2 Creating datasets from raw data', path: 'M1P2 Creating datasets from raw data.txt' },
-  { name: 'M1P3 Exploring data- Displaying datasets', path: 'M1P3 Exploring data- Displaying datasets.txt' },
-  { name: 'M1P5 Sorting data', path: 'M1P5 Sorting data.txt' },
-  { name: 'M1P7 Selecting & dropping variables', path: 'M1P7 Selecting & dropping variables.txt' },
-  { name: 'M1P9 Performing text manipulation', path: 'M1P9 Performing text manipulation.txt' },
-  { name: 'M2P1 generating frequency tables', path: 'M2P1 generating frequency tables.txt' },
-  { name: 'M2P3 performing one-sample + -tests', path: 'M2P3 performing one-sample + -tests.txt' },
-  { name: 'M2P5 performing paired t tests', path: 'M2P5 performing paired t tests.txt' },
-  { name: 'M2P6 performing one-way ANOVA', path: 'M2P6 performing one-way ANOVA.txt' },
+  { name: '5) Write a android program that demonstrate option menu', path: '5) Write a android program that demonstrate option menu.txt' },
+  { name: '4) Write an Android program to demonstrate activity life cycle, activity methods', path: '4) Write an Android program to demonstrate activity life cycle, activity methods.txt' },
+  { name: "3)C) Table layout-  Create a android application to design screen's using different layout and UI including button, text, text view, radio button etc", path: "3)C) Table layout-  Create a android application to design screen's using different layout and UI including button, text, text view, radio button etc.txt" },
+  { name: "3)B) Linear Layout(vertical)=  Create a android application to design screen's using different layout and UI including button, text, text view, radio button etc", path: "3)B) Linear Layout(vertical)=  Create a android application to design screen's using different layout and UI including button, text, text view, radio button etc.txt" },
+  { name: "3)A) Relative Layout = Create a android application to design screen's using different layout and UI including button, text, text view, radio button etc", path: "3)A) Relative Layout = Create a android application to design screen's using different layout and UI including button, text, text view, radio button etc.txt" },
+  { name: '2) Create an android project using Android Studios for programming resources, Android resources like color, strength, theme, drawable, dimensions, image', path: '2) Create an android project using Android Studios for programming resources, Android resources like color, strength, theme, drawable, dimensions, image.txt' },
+  { name: '1) Create a android project using Android Studios to write simple hello world program', path: '1) Create a android project using Android Studios to write simple hello world program.txt' }
   { name: 'BOOK CSV', path: 'BOOK.CSV' },
     // Add more file paths as needed
 ];
