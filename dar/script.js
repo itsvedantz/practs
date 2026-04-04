@@ -3,18 +3,18 @@ const cyberGrid = document.querySelector('.cyber-grid');
 // Assuming you have an array of PDF file paths
 const pdfFiles = [
 
-  { name: '1 column wise operation', path: '1 column wise operation.txt' },
-  { name: '2random dataset of 1000 values', path: '2random dataset of 1000 values.txt' },
-  { name: '4 1 D array of 100 datasets', path: '4 1 D array of 100 datasets.txt' },
-  { name: '5 inner join outer join', path: '5 inner join outer join.txt' },
-  { name: 'comparing the average value of a numerical column', path: 'comparing the average value of a numerical column.txt' },
-  { name: 'create a pivot table summarizing the data', path: 'create a pivot table summarizing the data.txt' },
-  { name: 'create a seaborn scatter plot between two numerical columns', path: 'create a seaborn scatter plot between two numerical columns.txt' },
-  { name: 'create a seaborn violin plot to show the distribution of values for each column', path: 'create a seaborn violin plot to show the distribution of values for each column.txt' },
-  { name: 'import numpy as np', path: 'import numpy as np.txt' },
-  { name: 'plot a boxplot for a numerical column grouped by a categorical column', path: 'plot a boxplot for a numerical column grouped by a categorical column.txt' },
-  { name: 'plot a histogram showing the distribution of a numerical column', path: 'plot a histogram showing the distribution of a numerical column.txt' },
-  { name: 'visualize the frequency distribution of values in a categorical column', path: 'visualize the frequency distribution of values in a categorical column.txt' }
+  { name: 'BOOK', path: 'BOOK.CSV' },
+  { name: 'M1P11 Reshaping data', path: 'M1P11 Reshaping data.R' },
+  { name: 'M1P2 Creating datasets from raw data', path: 'M1P2 Creating datasets from raw data.R' },
+  { name: 'M1P3 Exploring data- Displaying datasets', path: 'M1P3 Exploring data- Displaying datasets.R' },
+  { name: 'M1P5 Sorting data', path: 'M1P5 Sorting data.R' },
+  { name: 'M1P7 Selecting & dropping variables', path: 'M1P7 Selecting & dropping variables.R' },
+  { name: 'M1P9 Performing text manipulation', path: 'M1P9 Performing text manipulation.R' },
+  { name: 'M2P1 generating frequency tables', path: 'M2P1 generating frequency tables.R' },
+  { name: 'M2P3 performing one-sample + -tests', path: 'M2P3 performing one-sample + -tests.R' },
+  { name: 'M2P5 performing paired t tests', path: 'M2P5 performing paired t tests.R' },
+  { name: 'M2P6 performing one-way ANOVA', path: 'M2P6 performing one-way ANOVA.R' }
+
 
     // Add more file paths as needed
 ];
