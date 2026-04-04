@@ -12,11 +12,8 @@ const pdfFiles = [
   { name: 'create a seaborn scatter plot between two numerical columns', path: 'create a seaborn scatter plot between two numerical columns.txt' },
   { name: 'create a seaborn violin plot to show the distribution of values for each column', path: 'create a seaborn violin plot to show the distribution of values for each column.txt' },
   { name: 'import numpy as np', path: 'import numpy as np.txt' },
-  { name: 'index', path: 'index.html' },
   { name: 'plot a boxplot for a numerical column grouped by a categorical column', path: 'plot a boxplot for a numerical column grouped by a categorical column.txt' },
   { name: 'plot a histogram showing the distribution of a numerical column', path: 'plot a histogram showing the distribution of a numerical column.txt' },
-  { name: 'script', path: 'script.js' },
-  { name: 'style', path: 'style.css' },
   { name: 'visualize the frequency distribution of values in a categorical column', path: 'visualize the frequency distribution of values in a categorical column.txt' }
 
     // Add more file paths as needed
